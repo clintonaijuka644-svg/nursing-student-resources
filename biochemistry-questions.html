@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biochemistry practice questions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+        const button=
+        document.getElementById("runButton");
+        button.addEventListener("mouseover",
+            function() {
+                const moveX= (Math.random() * 100)
+                -50;
+            const moveY = (Math.random() * 100)
+        - 50;
+             button.style.transform = 
+            'translate(${moveX}px, ${moveY}px)';
+            });s
+    </script>
+    <header>
+        <h1>Nursing Student Resources</h1>
+        <a href="index.html">Home</a>
+        <a href="resources.html">Resources</a>
+    </header>
+    <a href="MCQs in biochemistry.pdf" target="_blank">
+    <button class="biochemistry-mcqs">View the Questions</button>
+    </a>
+    <div class="question" id="question">
+        <p class="eyebrow">Just a small question</p>
+        <h1>would you love me?</h1>
+        <div class="btn-row" id="btnRow">
+            <button id="yes">Yes</button>
+            <button id="runButton">No</button>
+        </div>
+        <p class="hint" id="hint">&nbsp;</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout- Nursing Notes Store</title>
+    <link rel="stylesheet" href="style.css"
+</head>
+<body>
+    <div class="checkout-page">
+    <header>
+        <h2>🎓Nursing Notes Store</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="notes.html">Notes</a>
+            <a href="bsn.html">Overview</a>
+        </nav>
+    </header>
+    <h1 class="Checkout-title">Checkout</h1>
+    <h2 id="product-title"></h2>
+    <p>Complete Human Anatomy Study Notes for Nursingstudents and other health courses</p>
+    <h3>Price: UGX 5,000</h3>
+    <h3>Choose Payment Method</h3>
+    <div class="payment-card">
+        <div class="payment-icon">📱</div>
+    <div>
+    </div>
+    <h3>Mobile Money</h3>
+    <p>Pay securely using mobile money.</p>
+    </div>
+    <span class="payment-arrow">⬇️</span>
+    <div class="mobile-money-details">
+        <h3>Mobile money payment</h3>
+        <p>Choose your preferred mobile network:</p>
+        <button type="button" onclick="selectPayment('MTN Mobile Money')">
+            MTN Mobile Money
+        </button>
+        <button type="button" onclick="selectPayment('Airtel Money')">
+            Airtel Money
+        </button>
+    </div>
+    <p id="selected-payment"></p>
+    <script>
+    function selectPayment(method) {
+        document.getElementById("selected-payment").textcontent=
+                                 "selected payment method:" + method;
+    }
+    </script> 
+    <script>
+        window.onload= function() {
+        const params= new
+        URLSearchParams(window.location.search);
+        const product= params.get("product");   
+        const title=
+        document.getElementById("product-title");
+        if (product == "anatomy") {
+            title.textContent= "Human Anatomy Notes";
+        } else if (product == "physiology") {
+            title.textContent= "Physiology Notes";
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomy Flashcards</title>
+    <style>
+        body {
+        font-family: arial, sans serif;
+        background: #f2f5f9;
+         text-align: center;
+         padding: 40px;    
+    
+    }
+    h1 {
+        margin-bottom: 30px;
+    }
+    .flashcard {
+        width: 350px;
+        height: 220px;
+        margin: 30px auto 20px;
+        background: white;
+        border-radius: 20px;
+        padding: 25px;
+        box-shadow: 0 8px 25px
+ rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        transition: t{ransform 0.2s;
+    }
+    .flashcard:hover {
+        transform: translateY(-5px);
+    }
+    .question
+    .answer {
+        font-size: 22px;
+        line-height: 1.5;
+    }
+    .question {
+        font-weight: bold;
+    }
+    .answer {
+        display: none;
+    }
+
+    .flashcard.show-answer .question {
+        display: none;   
+}
+.flashcard.show-answer .answer {
+    display: block !important;
+}
+#progress {
+    font-size: 16px;
+    margin: 15px;
+}
+button {
+    padding: 12px 22px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.subjects {
+    margin-bottom: 25px;
+}
+.subjects button {
+    background: white;
+    border: 1px solid #ddd;
+    margin: 5px;
+}
+.subjects button:hover {
+    transform: translateY(-2px);
+}
+
+    </style>
+</head>
+<body>
+    <h1>Flashcards</h1>
+    <div class="subjects">
+        <button onclick="loadSubject('anatomy')">Anatomy</button>
+        <button onclick="loadSubject('physiology')">Physiology</button>
+        <button onclick="loadSubject('biochemistry')">Biochemistry</button>
+        <button onclick="loadSubject('nursing')">fundamentals of Nursing</button>
+        </div>
+
+    <div class="flashcard" onclick="document.getElementById('question').style.setProperty
+    ('display','none','important');
+    document.getElementById('answer').style.setProperty('display','block','important');">
+        <div class="question" id="question">
+            What is anatomical position?
+        </div>
+        <div class="answer" id="answer">
+            The standard body position used as a reference in anatomy.
+        </div>
+    </div>
+    <p id="progress">Card 1 of 10</p>
+    <button onclick="previousCard()">Previous</button>
+    <button onclick="nextCard()">Next</button>
+<script>
+    const decks= {
+        anatomy: [
+    
+        {
+            question: "What is anatomical position?",
+            answer: "The standard body position used as a reference in anatomy."
+        },
+        {
+            question: "What is anatomy?",
+            answer: "The study of body structures and their relationships."
+        },
+        {
+            question: "What is physiology?",
+               answer: "The study of how the body functions."
+        },
+        {
+            question: "What is sagittal plane?",
+            answer: "A plane that divides the body into left and right parts."
+        },
+        {
+            question: "What is frontal plane?",
+            answer: "A plane that divides the body into anterior and posterior parts."
+        },
+        {
+            question: "What is transverse plane?",
+            answer: "A plane that divides the body into superior and inferior parts."
+        },
+        {
+            question: "What does superior mean?",
+            answer: "Toward the head or upper part of the body."
+        },
+        {
+            question: "What does inferior mean?",
+            answer: "Away from the head or toward the lower parts of the body."
+        },
+        {
+            question: "What does anterior mean?",
+            answer: "Toward the front of the body."
+        },
+        {
+            question: "What does posterior mean?",
+            answer: "Toward the back of the body."
+        }
+    ],
+
+    physiology: [
+        {
+            question: "What is physiology?",
+            answer: "The study of how the body functions."
+        },
+        {
+            question: "What is homeostasis?",
+            answer: "Maintenance of a relatively stable internal environment."
+        },
+        {
+            question: "What is negative feedback?",
+            answer: "A response that reverses the initial change."
+        }
+    ],
+    biochemistry: [
+        {
+            question: "What is biochemistry?",
+            answer: "The study of chemical processes in living organisms"
+        }
+    ],
+    nursing: [
+        {
+            question: "What is nursing?",
+            answer: "The care of individuals, families and communities to promote health."
+        }
+    ]
+    };
+    let cards= decks.anatomy;
+    let currentCard= 0;
+
+    function loadSubject(subject) {
+        cards= decks[subject];
+        currentCard= 0;
+        displayCard();
+    }
+    function showAnswer() {
+        const question=
+        document.getElementById("question");
+        const answer=
+        document.getElementById("answer");
+
+        if (answer.style.display == 
+        "block") {
+            answer.style.setProperty("display","none","important");
+            question.style.setProperty("display","block","important");
+        } else {
+            question.style.setProperty("display","none","important");
+            answer.style.setProperty("display","block","important");
+        }
+    }
+    function displayCard() {
+        document.getElementById("question").textContent=
+                        cards[currentCard].question;
+        document.getElementById("answer").textContent
+        =
+                        cards[currentCard].answer;
+        
+        document.getElementById("question").style.setProperty("display","block", "important");
+        document.getElementById("answer").style.setProperty("display","none", "important");                
+
+        document.getElementById("progress").textContent
+        =
+                         "Card" + (currentCard + 1) + "of" + cards.length;
+        document.querySelector(".flashcard").classList.remove("show-answer");                 
+    }
+    function nextCard() {
+        if (currentCard < cards.length-1) {
+            currentCard++;
+            displayCard();
+        }
+    }
+    function previousCard() {
+        if (currentCard > 0) {
+            currentCard--;
+            displayCard();
+        }
+    }
+</script>
+
+    
+</body>
+</html>
