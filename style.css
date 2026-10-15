@@ -1020,7 +1020,7 @@ mask-image: linear-gradient(
         width: 100%;
         max-width: 100%;
         height: auto;
-        object-fit: cover;
+        object-fit: contain;
     }
     header {
         width: 100%;
@@ -1066,3 +1066,4 @@ p, li {
     font-size: 15px;
     lin-height: 1.6;
 }
+
