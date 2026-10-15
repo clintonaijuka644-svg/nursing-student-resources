@@ -1015,6 +1015,7 @@ mask-image: linear-gradient(
         max-width: 100%;
         margin: 0;
         max-height: none;
+        position: relative;
     }
     .hero-image img {
         display: block;
@@ -1023,6 +1024,7 @@ mask-image: linear-gradient(
         height: auto;
         object-fit: contain;
         max-height: none;
+        position: relative;
     }
     header {
         width: 100%;
