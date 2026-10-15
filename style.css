@@ -972,3 +972,78 @@ mask-image: linear-gradient(
  .hero {
     margin-top: 0;
  }
+
+/* Mobile responsiveness */
+ @media (max-width: 600px) {
+    * {
+    box-sizing: border-box;
+ }
+ html,
+ body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+ }
+ img {
+    max-width: 100%;
+    height: auto;
+ }
+}
+@media (max-width: 600px) {
+    .hero {
+        flex-direction: column;
+        width: 100%;
+        min-height: auto;
+        padding: 20px 15px;
+    }
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+    }
+    .hero h1 {
+        font-size: 32px;
+        line-height: 1.2;
+        overflow-wrap: break-word;
+    }
+    .hero p {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+    .hero image {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+    .hero-image img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    header {
+        width: 100%;
+        max-width: 100%;
+        padding: 12px 10px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    header h2 {
+        font-size: 22px;
+        text-align: center;
+        overflow-wrap: anywhere;
+        margin: 0;
+    }
+    header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+    }
+    header nav a {
+        font-size: 14px;
+        padding: 5px;
+    }
+}
