@@ -178,7 +178,7 @@ nav a {
     padding: 25px 0 25px 8%;
     background: #0757c9;
     color: white;
-    overflow: hidden;
+    overflow: visible;
 }
 .hero-content {
     width: 50%;
