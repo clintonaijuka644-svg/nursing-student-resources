@@ -1070,4 +1070,10 @@ p, li {
     font-size: 15px;
     lin-height: 1.6;
 }
+.hero-content {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    
+}
 
