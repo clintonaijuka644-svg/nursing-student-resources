@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0757c9">
     <script
           src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
@@ -251,5 +253,14 @@
         ©️ 2026 Nursing Notes Store. All rights reserved.
     </div>
 </footer>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(() => console.log("App is ready"))
+      .catch(error => console.log("App error:", error));
+  });
+}
+</script>
 </body>
 </html>
