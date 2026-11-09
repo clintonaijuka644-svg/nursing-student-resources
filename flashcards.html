@@ -1,563 +1,723 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anatomy Flashcards</title>
-    <style>
-        body {
-        font-family: arial, sans serif;
-        background: #f2f5f9;
-         text-align: center;
-         padding: 40px;    
-    
-    }
-    h1 {
-        margin-bottom: 30px;
-    }
-    .flashcard {
-        width: 350px;
-        height: 220px;
-        margin: 30px auto 20px;
-        background: white;
-        border-radius: 20px;
-        padding: 25px;
-        box-shadow: 0 8px 25px
- rgba(0, 0, 0, 0.15);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-        transition: t{ransform 0.2s;
-    }
-    .flashcard:hover {
-        transform: translateY(-5px);
-    }
-    .question
-    .answer {
-        font-size: 22px;
-        line-height: 1.5;
-    }
-    .question {
-        font-weight: bold;
-    }
-    .answer {
-        display: none;
-    }
-
-    .flashcard.show-answer .question {
-        display: none;   
-}
-.flashcard.show-answer .answer {
-    display: block !important;
-}
-#progress {
-    font-size: 16px;
-    margin: 15px;
-}
-button {
-    padding: 12px 22px;
-    margin: 5px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-}
-.subjects {
-    margin-bottom: 25px;
-}
-.subjects button {
-    background: white;
-    border: 1px solid #ddd;
-    margin: 5px;
-}
-.subjects button:hover {
-    transform: translateY(-2px);
-}
-
-    </style>
+    <title>Flashcards | Health Science Resources</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Flashcards</h1>
-    <div class="subjects">
-        <button onclick="loadSubject('anatomy')">Anatomy</button>
-        <button onclick="loadSubject('physiology')">Physiology</button>
-        <button onclick="loadSubject('biochemistry')">Biochemistry</button>
-        <button onclick="loadSubject('nursing')">fundamentals of Nursing</button>
+
+<body class="flashcards-page">
+
+<header class="flashcards-header">
+    <div class="flashcards-brand">
+        <h2>Health Science Resources</h2>
+    </div>
+
+    <nav class="flashcards-nav">
+        <a href="index.html">Home</a>
+        <a href="notes.html">Study Materials</a>
+        <a href="resources.html">Resources</a>
+    </nav>
+</header>
+
+<main>
+
+    <!-- PAGE INTRODUCTION -->
+    <section class="flashcards-hero">
+        <div>
+            <span class="flashcards-label">SMART STUDY TOOLS</span>
+            <h1>Learn Better with Flashcards</h1>
+            <p>
+                Test your knowledge, revise important concepts
+                and strengthen your understanding of health sciences.
+            </p>
+        </div>
+    </section>
+
+    <!-- FLASHCARD CATEGORIES -->
+    <section class="flashcard-categories">
+        <div class="flashcard-section-heading">
+            <div>
+                <h2>Explore Flashcards</h2>
+                <p>Choose a subject to begin your revision.</p>
+            </div>
         </div>
 
-    <div class="flashcard" onclick="document.getElementById('question').style.setProperty
-    ('display','none','important');
-    document.getElementById('answer').style.setProperty('display','block','important');">
-        <div class="question" id="question">
-            What is anatomical position?
+        <div class="flashcard-category-grid">
+
+            <a href="#anatomy" class="flashcard-category">
+                <div class="flashcard-category-icon">🦴</div>
+                <h3>Anatomy</h3>
+                <p>Explore body structures and organs.</p>
+                <span>Study cards →</span>
+            </a>
+
+            <a href="#physiology" class="flashcard-category">
+                <div class="flashcard-category-icon">❤️</div>
+                <h3>Physiology</h3>
+                <p>Understand how the body functions.</p>
+                <span>Study cards →</span>
+            </a>
+
+            <a href="#biochemistry" class="flashcard-category">
+                <div class="flashcard-category-icon">🧪</div>
+                <h3>Biochemistry</h3>
+                <p>Revise biomolecules and chemical processes.</p>
+                <span>Study cards →</span>
+            </a>
+
+            <a href="#fundamentals" class="flashcard-category">
+                <div class="flashcard-category-icon">🩺</div>
+                <h3>Fundamentals of Nursing</h3>
+                <p>Practise essential nursing concepts.</p>
+                <span>Study cards →</span>
+            </a>
+
         </div>
-        <div class="answer" id="answer">
-            The standard body position used as a reference in anatomy.
+    </section>
+
+    <!-- FLASHCARD STUDY AREA -->
+    <section class="flashcard-study-area" id="anatomy">
+
+        <div class="flashcard-section-heading">
+            <div>
+                <h2>Start Learning</h2>
+                <p>Select a subject and test what you know.</p>
+            </div>
+        </div>
+
+        <div class="flashcard-study-box">
+
+            <div class="flashcard-top">
+                <span id="flashcard-subject">Anatomy</span>
+                <span id="flashcard-count">Card 1 of 10</span>
+            </div>
+
+            <div class="flashcard-display" id="flashcard">
+			<div class="card-status" id="card-status">
+    Not Marked
+</div>
+                <span class="question-label">QUESTION</span>
+                <h2 id="flashcard-question">
+                    What is anatomy?
+                </h2>
+                <p id="flashcard-instruction">
+                    Think about your answer, then reveal it.
+                </p>
+
+                <button type="button" id="reveal-answer">
+                    Reveal Answer
+                </button>
+            </div>
+
+            <div class="flashcard-answer" id="flashcard-answer">
+                The study of body structure.
+            </div>
+
+<div class="flashcard-controls">
+    <button type="button" id="previous-card">← Previous</button>
+    <button type="button" id="shuffle-cards">🔀 Shuffle</button>
+    <button type="button" id="next-card">Next →</button>
+</div>
+
+<div class="flashcard-rating">
+    <button type="button" id="mark-known">✓ Mark as Known</button>
+    <button type="button" id="mark-revision">↻ Needs Revision</button>
+</div>
+
+<div class="flashcard-progress">
+    <div class="flashcard-progress-info">
+        <span>Study Progress</span>
+        <span id="progress-text">0%</span>
+    </div>
+<div class="flashcard-statistics">
+
+    <div class="stat-box known-stat">
+        <h3 id="known-count">0</h3>
+        <p>Known</p>
+    </div>
+
+    <div class="stat-box revision-stat">
+        <h3 id="revision-count">0</h3>
+        <p>Needs Revision</p>
+    </div>
+
+    <div class="stat-box remaining-stat">
+        <h3 id="remaining-count">0</h3>
+        <p>Unmarked</p>
+    </div>
+
+</div>
+
+<div class="reset-progress-container">
+    <button type="button" id="reset-progress">
+        ↻ Reset Subject Progress
+    </button>
+</div>
+
+<div class="review-difficult-container">
+    <button type="button" id="review-difficult">
+        📖 Review Difficult Cards
+    </button>
+
+    <button type="button" id="show-all-cards">
+        Show All Cards
+    </button>
+</div>
+<section class="subject-progress">
+    <h2>Subject Progress</h2>
+
+    <div class="subject-progress-item">
+        <div class="subject-progress-heading">
+            <span>Anatomy</span>
+            <span id="anatomy-progress-text">0%</span>
+        </div>
+        <div class="subject-progress-track">
+            <div class="subject-progress-fill" id="anatomy-progress-fill"></div>
         </div>
     </div>
-    <p id="progress">Card 1 of 10</p>
-    <button onclick="previousCard()">Previous</button>
-    <button onclick="nextCard()">Next</button>
-<script>
-    const decks= {
-        anatomy: [
-    
-        {
-            question: "What is anatomical position?",
-            answer: "The standard body position used as a reference in anatomy."
-        },
-        {
-            question: "What is anatomy?",
-            answer: "The study of body structures and their relationships."
-        },
-        {
-            question: "What is physiology?",
-               answer: "The study of how the body functions."
-        },
-        {
-            question: "What is sagittal plane?",
-            answer: "A plane that divides the body into left and right parts."
-        },
-        {
-            question: "What is frontal plane?",
-            answer: "A plane that divides the body into anterior and posterior parts."
-        },
-        {
-            question: "What is transverse plane?",
-            answer: "A plane that divides the body into superior and inferior parts."
-        },
-        {
-            question: "What does superior mean?",
-            answer: "Toward the head or upper part of the body."
-        },
-        {
-            question: "What does inferior mean?",
-            answer: "Away from the head or toward the lower parts of the body."
-        },
-        {
-            question: "What does anterior mean?",
-            answer: "Toward the front of the body."
-        },
-        {
-            question: "What does posterior mean?",
-            answer: "Toward the back of the body."
-        },
-        {
-            question: "What is gross anatomy?",
-            answer: "This is the study of structures visible to the naked eye."
-        },
-        {
-            question: "What is histology?",
-            answer: "This is the study of tissues under a microscope."
-        },
-        {
-            question: "What is embrology?",
-            answer: "This is the study of the development of an organism before birth."
-        },
-        {
-            question: "Which level of organisation comes immediately after the cellular level?",
-            answer: "Tissue."
-        },
-        {
-            question: "In standard anatomical position the palms face",
-            answer: "Forward."
-        },
-        {
-           question: "The nose is.......to the ears",
-           answer: "Medial"
-        },
-        {
-            question: "The sternum is------to the heart",
-            answer: "Anterior"
-        },
-        {
-            question: "The elbow is------to the wrist",
-            answer: "Proximal"
-        },
-        {
-            question: "The skin is-------to the skeletal muscles",
-            answer: "Superficial"
-        },
-        {
-            question: "The vertebral column is------to the sternum",
-            answer: "Posterior"
-        },
-        {
-            question: "Which term means further from the point of attchment of a limb?",
-            answer: "Distal"
-        },
-        {
-            question: "The term meaning toward the head is:",
-            answer: "Superior"
-        },
-        {
-            question: "A structure located on the same side of the body as another structure is described as:",
-            answer: "Ipsilateral"
-        },
-        {
-            question: "Which plane divides the body into equal right and left halves?",
-            answer: "Midsaggital"
-        },
-        {
-            question: "The coronal plane divides the body into:",
-            answer: "Anterior and Posterior parts"
-        },
-        {
-            question: "Which plane divides the body into superior and inferior parts",
-            answer: "Transverse plane"
-        },
-        {
-            question: "The brain is located in the:",
-            answer: "Cranial cavity"
-        },
-        {
-            question: "The lungs are located in the:",
-            answer: "Thoracic"
-        },
-        {
-            question: "Which cavity contains the urinary bladder?",
-            answer: "Pelvic cavity"
-        },
-        {
-            question: "The diaphragm seperates the:",
-            answer: "Thoracic and abdominopelvic cavities"
-        },
-        {
-            question: "Which serous membrane covers the lungs?",
-            answer: "Pleura"
-        },
-        {
-            question: "Which membrane surrounds the heart?",
-            answer: "Pericardium"
-        },
-        {
-            question: "The abdominal organs are primarily associated with which serous membrane",
-            answer: "Peritoneum"
-        },
-        {
-            question: "Which organelle is mainly responsible for producing ATP?",
-            answer: "Mitochondria"
-        },
-        {
-            question: "Which cell structure controls the activities of the cell and contains most of it's DNA?",
-            answer: "Nucleus"
-        },
-        {
-            question: "Which tissue covers body surfaces and lines internal cavities?",
-            answer: "Epithelial tisssue"
-        },
-        {
-            question: "Which tissue is primarily respponsible for transmitting elctrical impulses?",
-            answer: "Nervous tissue"
-        },
-        {
-            question: "Which type of muscle is involutary and found in the walls of intestines?",
-            answer: "Smooth muscle"
-        },
-        {
-            question: "Which type of muscle is found in the wall of the heart",
-            answer: "Cardiac muscle"
-        },
-        {
-            question: "Which tissue stores fats and helps insulate the body?",
-            answer: "Adipose tissue"
-        },
-        {
-            question: "The basic structural and functional unit of a nervous system is the?",
-            answer: "Neuron"
-        },
-        {
-            question: "Which cell structure regulates the movement of substances into and out of the cell?",
-            answer: "Plasma membrane"
-        },
-        {
-            question: "How many bone are normally present in an adult human skeleton?",
-            answer: "206 bones"
-        },
-        {
-            question: "Which is the longest bone in the human body?",
-            answer: "Femur"
-        },
-        {
-            question: "Which bone protects the brain?",
-            answer: "Cranium"
-        },
-        {
-            question: "The bone of the upper arm is called the:",
-            answer: "Humerous"
-        },
-        {
-            question: "Which joint allows movement in many directions, including rotation?",
-            answer: "Ball and socket joint"
-        },
-        {
-            question: "The elbow is an example of which type of synovial joint?",
-            answer: "Hinge joint"
-        },
-        {
-            question: "Which cells are responsible for forming new bone tissues?",
-            answre: "Osteoblasts"
-        },
-        {
-            question: "Which organ pumps blood throught the body?",
-            answer: "Heart"
-        },
-        {
-            question: "What is the largest internal organ in the human body?",
-            answer: "Liver"
-        },
-        {
-            question: "Which organ is primarily responsible for filtering blood to form urine?",
-            answer: "Kidney"
-        },
-        {
-            question: "Which structure carries air from the larynx toward the bronchi?",
-            answer: "Trachea"
-        },
-        {
-            question: "Where does most nutrient absorption occur in the digestive tract?",
-            answer: "Small intestine"
-        },
-        {
-            question: "Which part of the brain is primarily responsible for balance and coordination?",
-            answer: "Cerebellum"
-        },
-        {
-            question: "Which chamber of the heart pumps oxygenated blood into the aorta?",
-            answer: "Left ventrical"
-        },
-        {
-            question: "The functional unit of the kidney is the:",
-            answer: "Nephron"
-        },
-        {
-            question: "Which gland is known as the master gland because it regulates several other endocrine glands?",
-            answer: "Pititary"
-        },
-        {
-            question: "Which hormone lowers blood glucose level?",
-            answer: "insulin"
-        },
-        {
-            question: "Which hormone raises blood calcium levels?",
-            answer: "Parathyroid hormone"
-        },
-        {
-            question: "Aldosterone primarily causes the kidneys to:",
-            answer: "Retain sodium and water"
-        },
-        {
-            question: "Which formed element of blood carries oxygen?",
-            answer: "Erythrocyte"
-        },
-        {
-            question: "The oxygen-carrying protein inside red blood cells is:",
-            answer: "Hemoglobin"
-        },
-        {
-            question: "Which blood cell is most abundant in normal blood?",
-            answer: "Neutrophil"
-        },
-        {
-            question: "A person with type O negative blood is often called a:",
-            answer: "Universal red cell donor"
-        },
-        {
-            question: "The vessel carrying blood from the right ventrical toward the lungs is:",
-            answer: "Pulmonary artery"
-        },
-        {
-            question: "Which blood vessels contain valves that help prevent backflow?",
-            answer: "Veins"
-        },
-        {
-            question: "Cardiac output equals:",
-            answer: "Heart rate x Stroke rate"
-        },
-        {
-            question: "If heart rate is 75 beats/min and stroke volume is 70ml/beat, cardiac output=",
-            answer: "1050ml/min"
-        },
-        {
-            question: "The primary site for the exchange between blood and tissues is the:",
-            answer: "Capillary"
-        },
-        {
-            question: "Which organ filters blood and removes old red blood cells?",
-            answer: "Spleen"
-        },
-        {
-            question: "T lymphocytes mature in the:",
-            answer: "Bone marrow"
-        },
-        {
-            question: "B lymphocytes can differentiate into cells that produce:",
-            answer: "Antibodies"
-        },
-        {
-            question: "Which type of immunity develops after exposure to a pathogen or vaccination?",
-            answer: "Adaptive immunity"
-        },
-        {
-            question: "Inflammation commonly produces:",
-            answer: "Redness, heat, swelling and pain"
-        },
-        {
-            question: "The primary muscle responsible for quiet inspiration is the:",
-            answer: "Diaphragm"
-        }
 
-        
+    <div class="subject-progress-item">
+        <div class="subject-progress-heading">
+            <span>Physiology</span>
+            <span id="physiology-progress-text">0%</span>
+        </div>
+        <div class="subject-progress-track">
+            <div class="subject-progress-fill" id="physiology-progress-fill"></div>
+        </div>
+    </div>
+
+    <div class="subject-progress-item">
+        <div class="subject-progress-heading">
+            <span>Biochemistry</span>
+            <span id="biochemistry-progress-text">0%</span>
+        </div>
+        <div class="subject-progress-track">
+            <div class="subject-progress-fill" id="biochemistry-progress-fill"></div>
+        </div>
+    </div>
+</section>
+
+    <div class="flashcard-progress-track">
+        <div id="progress-fill"></div>
+    </div>
+</div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer class="flashcards-footer">
+    <p>© 2026 Health Science Resources. All rights reserved.</p>
+</footer>
+
+<script>
+
+// =====================================
+// FLASHCARD QUESTIONS AND ANSWERS
+// =====================================
+
+const flashcardDecks = {
+    anatomy: [
+        ["What is anatomy?", "The study of body structure."],
+        ["What is physiology?", "The study of how the body functions."],
+        ["What is the anatomical position?", "Standing upright, facing forward, arms at the sides and palms facing forward."],
+        ["What does superior mean?", "Toward the head or upper part of the body."],
+        ["What does inferior mean?", "Toward the lower part of the body."],
+        ["What does anterior mean?", "Toward the front of the body."],
+        ["What does posterior mean?", "Toward the back of the body."],
+        ["What is the sagittal plane?", "A plane dividing the body into left and right parts."],
+        ["What is the frontal plane?", "A plane dividing the body into anterior and posterior parts."],
+        ["What is the transverse plane?", "A plane dividing the body into upper and lower parts."]
     ],
 
     physiology: [
-        {
-            question: "What is physiology?",
-            answer: "The study of how the body functions."
-        },
-        {
-            question: "What is homeostasis?",
-            answer: "Maintenance of a relatively stable internal environment."
-        },
-        {
-            question: "What is negative feedback?",
-            answer: "A response that reverses the initial change."
-        }
+        ["What is physiology?", "The study of normal functions of living organisms and their parts."],
+        ["What does physiology explain?", "How the body and its organs function."],
+        ["What is anatomy?", "The study of body structure and relationships between body parts."],
+        ["How are anatomy and physiology related?", "Anatomy studies structure, while physiology studies function."],
+        ["Give an example of physiology.", "Studying how the heart contracts and pumps blood."],
+        ["What is normal physiology?", "The study of normal body functions in a healthy state."],
+        ["Why is physiology important in nursing?", "It helps nurses understand normal function and recognise abnormal changes."],
+        ["What is cellular physiology?", "The study of how cells perform their normal functions."],
+        ["What is organ physiology?", "The study of how individual organs perform their functions."],
+        ["What is systemic physiology?", "The study of how body systems function and work together."]
     ],
+
     biochemistry: [
-        {
-            question: "What is biochemistry?",
-            answer: "The study of chemical processes in living organisms"
-        },
-        {
-            question: "What are the four biomolecules?",
-            answer: "Carbohydrates, proteins, lipids, and nucleic acids."
-        },
-        {
-            question: "What are the two major inorganic substances in the body?",
-            answer: "Water and mineral salts"
-        },
-        {
-            question: "What is metabolism?",
-            answer: "The sum of all chemical reactions occuring in the body"
-        },
-        {
-            question: "What is anabolism?",
-            answer: "Building complex molecules from simpler molecules using energy"
-        },
-        {
-            question: "What is catabolism?",
-            answer: "Breaking down complex molecules into simpler ones, releasing energy"
-        },
-        {
-            question: "What is homeostasis?",
-            answer: "Maintenance of a relatively stable internal environment"
-        },
-        {
-            question: "What is the importance of water in the body?",
-            answer: "Solvent, transport medium, temperature regulation and chemical reactions"
-        },
-        {
-            question: "What is ATP?",
-            answer: "The primary energy currency of cells"
-        },
-        {
-            question: "Why is biochemistry important in nursing?",
-            answer: "It helps understand nutrition, metabolism, diseases and laboratory findings"
-        },
-        {
-            question: "What are carbohydrates?",
-            answer: "Organic compounds made of carbon, hyddrogen and oxygen usually in the ratio of 1:2:1 (C:H:O)"
-        },
-        {
-            question: "Explain the structure of carbohydrates?",
-            answer: "Carbohydrates are made up of carbonyl group (C=O) and multiple hydroxyl groups (-OH). They can exist in linear or ring form."
-        },
-        {
-            question: "What is the general formula of carbohydrates?",
-            answer: "(CH2O)n"
-        },
-        {
-            question: "Carbohydrates are divided into three classes namely;",
-            answer: "Monosacchrides, oligosaccharides, and polysaccharides"
-        },
-        {
-            question: "What are monosaccharides?",
-            answer: "These are the simplest form of carbohydrates which cannot be hydrolysed into simpler units."
-        },
-        {
-            question: "What are the examples of monosaccharides?",
-            answer: "glucose, fructose, ribose and galactose"
-        },
-        {
-            question: "What is the ring structure of glucose? Draw and label it's cyclic structure showing the carbon atoms, oxygen atoms and hydroxyl groups.",
-            answer: "Glucose mainly exists in a six membered ring form called glucopyranose.",
-            image: "images/glucose structure.png"
-        }
-    ],
-    nursing: [
-        {
-            question: "What is nursing?",
-            answer: "The care of individuals, families and communities to promote health."
-        }
+        ["What is biochemistry?", "The study of chemical substances and processes in living organisms."],
+        ["What are the four major biomolecules?", "Carbohydrates, proteins, lipids and nucleic acids."],
+        ["What is the main function of carbohydrates?", "They provide energy and help store energy."],
+        ["What is the basic unit of proteins?", "Amino acids."],
+        ["What is a peptide bond?", "A covalent bond linking two amino acids."],
+        ["What is the main storage form of carbohydrates in humans?", "Glycogen, stored mainly in the liver and muscles."],
+        ["What is an enzyme?", "A biological catalyst that speeds up chemical reactions."],
+        ["What is the main function of lipids?", "Energy storage, insulation and cell membrane formation."],
+        ["Which sugar is found in blood?", "Glucose."],
+        ["What is ATP?", "Adenosine triphosphate, the primary energy currency of cells."]
     ]
-	};
-    
-	window.decks = decks;
-    let cards= decks.anatomy;
-    let currentCard= 0;
+};
 
-    function loadSubject(subject) {
-        cards= decks[subject];
-        currentCard= 0;
+
+// =====================================
+// VARIABLES
+// =====================================
+
+let currentSubject = "anatomy";
+let currentCard = 0;
+let answerVisible = false;
+
+let reviewMode = false;
+let reviewCards = [];
+
+const knownCards = {
+    anatomy: new Set(),
+    physiology: new Set(),
+    biochemistry: new Set()
+};
+
+const revisionCards = {
+    anatomy: new Set(),
+    physiology: new Set(),
+    biochemistry: new Set()
+};
+
+
+// =====================================
+// LOAD SAVED PROGRESS
+// =====================================
+
+function loadFlashcardProgress() {
+    try {
+        const saved = JSON.parse(
+            localStorage.getItem("flashcardProgress") || "{}"
+        );
+
+        Object.keys(knownCards).forEach(subject => {
+            (saved.known?.[subject] || []).forEach(question => {
+                knownCards[subject].add(question);
+            });
+
+            (saved.revision?.[subject] || []).forEach(question => {
+                revisionCards[subject].add(question);
+            });
+        });
+
+    } catch (error) {
+        console.log("Could not load saved progress.");
+    }
+}
+
+loadFlashcardProgress();
+
+
+// =====================================
+// HTML ELEMENTS
+// =====================================
+
+const question = document.getElementById("flashcard-question");
+const answer = document.getElementById("flashcard-answer");
+const count = document.getElementById("flashcard-count");
+const subject = document.getElementById("flashcard-subject");
+const progressText = document.getElementById("progress-text");
+const progressFill = document.getElementById("progress-fill");
+const revealButton = document.getElementById("reveal-answer");
+
+
+// =====================================
+// DISPLAY FLASHCARD
+// =====================================
+
+function displayCard() {
+
+    const cards = reviewMode
+        ? reviewCards
+        : flashcardDecks[currentSubject];
+
+    const total = cards.length;
+
+    if (total === 0) {
+
+        question.textContent = "No difficult cards to review!";
+        answer.textContent = "";
+        answer.style.display = "none";
+
+        count.textContent = "No cards available";
+
+        progressText.textContent = "0%";
+        progressFill.style.width = "0%";
+
+        revealButton.textContent = "Reveal Answer";
+        answerVisible = false;
+
+        updateStatistics();
+        return;
+    }
+
+    question.textContent = cards[currentCard][0];
+	const currentQuestion = cards[currentCard][0];
+const statusElement = document.getElementById("card-status");
+
+if (knownCards[currentSubject].has(currentQuestion)) {
+    statusElement.textContent = "✓ Known";
+    statusElement.className = "card-status known";
+} else if (revisionCards[currentSubject].has(currentQuestion)) {
+    statusElement.textContent = "↻ Needs Revision";
+    statusElement.className = "card-status revision";
+} else {
+    statusElement.textContent = "Not Marked";
+    statusElement.className = "card-status unmarked";
+}
+    answer.textContent = cards[currentCard][1];
+
+    count.textContent = `Card ${currentCard + 1} of ${total}`;
+
+    subject.textContent =
+        currentSubject.charAt(0).toUpperCase() +
+        currentSubject.slice(1);
+
+    const progress = ((currentCard + 1) / total) * 100;
+
+    progressText.textContent = Math.round(progress) + "%";
+    progressFill.style.width = progress + "%";
+
+    answer.style.display = "none";
+
+    revealButton.textContent = "Reveal Answer";
+    answerVisible = false;
+
+    updateStatistics();
+}
+
+
+// =====================================
+// SAVE PROGRESS
+// =====================================
+
+function saveFlashcardProgress() {
+
+    const progress = {
+        known: {},
+        revision: {}
+    };
+
+    Object.keys(knownCards).forEach(subject => {
+
+        progress.known[subject] = [...knownCards[subject]];
+
+        progress.revision[subject] = [...revisionCards[subject]];
+
+    });
+
+    localStorage.setItem(
+        "flashcardProgress",
+        JSON.stringify(progress)
+    );
+}
+
+
+// =====================================
+// UPDATE STATISTICS
+// =====================================
+
+function updateStatistics() {
+
+    const cards = flashcardDecks[currentSubject];
+
+    const known = knownCards[currentSubject].size;
+
+    const revision = revisionCards[currentSubject].size;
+
+    const remaining = cards.filter(card =>
+        !knownCards[currentSubject].has(card[0]) &&
+        !revisionCards[currentSubject].has(card[0])
+    ).length;
+
+    document.getElementById("known-count").textContent = known;
+
+    document.getElementById("revision-count").textContent = revision;
+
+    document.getElementById("remaining-count").textContent = remaining;
+
+
+    // UPDATE PROGRESS FOR ALL SUBJECTS
+
+    Object.keys(flashcardDecks).forEach(subject => {
+
+        const total = flashcardDecks[subject].length;
+
+        const reviewed = new Set([
+            ...knownCards[subject],
+            ...revisionCards[subject]
+        ]).size;
+
+        const percentage = total === 0
+            ? 0
+            : Math.round((reviewed / total) * 100);
+
+        document.getElementById(
+            subject + "-progress-text"
+        ).textContent = percentage + "%";
+
+        document.getElementById(
+            subject + "-progress-fill"
+        ).style.width = percentage + "%";
+
+    });
+}
+
+// =====================================
+// REVEAL ANSWER
+// =====================================
+
+revealButton.addEventListener("click", function () {
+
+    const cards = reviewMode
+        ? reviewCards
+        : flashcardDecks[currentSubject];
+
+    if (cards.length === 0) return;
+
+    answerVisible = !answerVisible;
+
+    answer.style.display = answerVisible ? "block" : "none";
+
+    revealButton.textContent = answerVisible
+        ? "Hide Answer"
+        : "Reveal Answer";
+
+});
+
+
+// =====================================
+// NEXT CARD
+// =====================================
+
+document.getElementById("next-card").addEventListener("click", function () {
+
+    const cards = reviewMode
+        ? reviewCards
+        : flashcardDecks[currentSubject];
+
+    const total = cards.length;
+
+    if (total === 0) return;
+
+    currentCard = (currentCard + 1) % total;
+
+    displayCard();
+
+});
+
+
+// =====================================
+// PREVIOUS CARD
+// =====================================
+
+document.getElementById("previous-card").addEventListener("click", function () {
+
+    const cards = reviewMode
+        ? reviewCards
+        : flashcardDecks[currentSubject];
+
+    const total = cards.length;
+
+    if (total === 0) return;
+
+    currentCard = (currentCard - 1 + total) % total;
+
+    displayCard();
+
+});
+
+
+// =====================================
+// REVIEW DIFFICULT CARDS
+// =====================================
+
+document.getElementById("review-difficult").addEventListener("click", function () {
+
+    reviewCards = flashcardDecks[currentSubject].filter(card =>
+        revisionCards[currentSubject].has(card[0])
+    );
+
+    reviewMode = true;
+
+    currentCard = 0;
+
+    displayCard();
+
+});
+
+
+// =====================================
+// SHOW ALL CARDS
+// =====================================
+
+document.getElementById("show-all-cards").addEventListener("click", function () {
+
+    reviewMode = false;
+
+    currentCard = 0;
+
+    displayCard();
+
+});
+
+
+// =====================================
+// SHUFFLE CARDS
+// =====================================
+
+document.getElementById("shuffle-cards").addEventListener("click", function () {
+
+    const cards = reviewMode
+        ? reviewCards
+        : flashcardDecks[currentSubject];
+
+    for (let i = cards.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+
+    }
+
+    currentCard = 0;
+
+    displayCard();
+
+});
+
+
+// =====================================
+// MARK AS KNOWN
+// =====================================
+
+document.getElementById("mark-known").addEventListener("click", function () {
+
+    const cards = reviewMode
+        ? reviewCards
+        : flashcardDecks[currentSubject];
+
+    if (cards.length === 0) return;
+
+    const currentQuestion = cards[currentCard][0];
+
+    knownCards[currentSubject].add(currentQuestion);
+saveFlashcardProgress();
+displayCard();
+alert("Card marked as Known!");
+
+});
+
+
+// =====================================
+// MARK AS NEEDS REVISION
+// =====================================
+
+document.getElementById("mark-revision").addEventListener("click", function () {
+
+    const cards = reviewMode
+        ? reviewCards
+        : flashcardDecks[currentSubject];
+
+    if (cards.length === 0) return;
+
+    const currentQuestion = cards[currentCard][0];
+
+    revisionCards[currentSubject].add(currentQuestion);
+saveFlashcardProgress();
+displayCard();
+
+    alert("Card added to Needs Revision!");
+
+});
+
+
+// =====================================
+// RESET SUBJECT PROGRESS
+// =====================================
+
+document.getElementById("reset-progress").addEventListener("click", function () {
+
+    const confirmReset = confirm(
+        "Are you sure you want to reset progress for " +
+        currentSubject + "?"
+    );
+
+    if (confirmReset) {
+
+        knownCards[currentSubject].clear();
+
+        revisionCards[currentSubject].clear();
+
+        reviewMode = false;
+        reviewCards = [];
+
+        currentCard = 0;
+
+        saveFlashcardProgress();
+
         displayCard();
-    }
-    function showAnswer() {
-        const question=
-        document.getElementById("question");
-        const answer=
-        document.getElementById("answer");
 
-        if (answer.style.display == 
-        "block") {
-            answer.style.setProperty("display","none","important");
-            question.style.setProperty("display","block","important");
-        } else {
-            question.style.setProperty("display","none","important");
-            answer.style.setProperty("display","block","important");
-        }
-    }
-    function displayCard() {
-        document.getElementById("question").textContent=
-                        cards[currentCard].question;
-        document.getElementById("answer").textContent
-        =
-                        cards[currentCard].answer;
-        
-        document.getElementById("question").style.setProperty("display","block", "important");
-        document.getElementById("answer").style.setProperty("display","none", "important");                
+        alert("Progress has been reset for " + currentSubject + "!");
 
-        document.getElementById("progress").textContent
-        =
-                         "Card" + (currentCard + 1) + "of" + cards.length;
-        document.querySelector(".flashcard").classList.remove("show-answer");                 
     }
-    function nextCard() {
-        if (currentCard < cards.length-1) {
-            currentCard++;
+
+});
+
+
+// =====================================
+// SWITCH SUBJECTS
+// =====================================
+
+document.querySelectorAll(".flashcard-category").forEach(function (card) {
+
+    card.addEventListener("click", function (event) {
+
+        const selectedSubject = this.getAttribute("href").replace("#", "");
+
+        if (flashcardDecks[selectedSubject]) {
+
+            event.preventDefault();
+
+            currentSubject = selectedSubject;
+
+            currentCard = 0;
+
+            reviewMode = false;
+            reviewCards = [];
+
             displayCard();
+
+            document.querySelector(".flashcard-study-area")
+                .scrollIntoView({ behavior: "smooth" });
+
+        } else if (selectedSubject === "fundamentals") {
+
+            event.preventDefault();
+
+            alert("Fundamentals of Nursing flashcards are coming soon!");
+
         }
-    }
-    function previousCard() {
-        if (currentCard > 0) {
-            currentCard--;
-            displayCard();
-        }
-    }
+
+    });
+
+});
+
+
+// =====================================
+// INITIAL DISPLAY
+// =====================================
+
+displayCard();
+
 </script>
-<script type="module" src="./script.js"></script>
-    
+
 </body>
 </html>

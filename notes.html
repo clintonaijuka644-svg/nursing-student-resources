@@ -1,44 +1,250 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nursing Study Notes</title>
-    <Link rel="stylesheet" href="style.css">
+    <title>Study Notes | Health Science Resources</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <h2>🎓Nursing Student Resources</h2>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="resources.html">Resources</a>
-            <span class="cart">🛒</span>
-        </nav>
-    </header>
-    <h1 class="notes-page-title">Nursing Study Notes</h1>
-    <div class="notes-categories">
-        <div class="category">
-            <h2>🫀 Human Anatomy</h2>
-            <p>Study the structure of the human body.</p>
-                <a href="anatomy-sample.pdf" target="_blank">View Notes</a>
-                <a href="checkout.html" class="buy">Buy Now</a>
-        </div>
-        <div class="category">
-            <h2>🧠 physiology</h2>
-            <p>Learn how the human body functions.</p>
-            <a href="#">View Notes</a>
-        </div>
-        <div class="category">
-            <h2>🧪 Biochemistry</h2>
-            <p>understand chemical processes in the body.</p>
-            <a href="#">View Notes</a>
-        </div>
-        <div class="category" id="nursing-fundamentals">
-            <h2>🩺Nursing fundamentals</h2>
-            <p>Essential Knowledge and skills for nursing students.</p>
-            <a href="#">View Notes</a>
+
+<body class="notes-page">
+
+<header class="notes-header">
+    <div class="notes-brand">Health Science Resources</div>
+
+    <nav class="notes-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#courses">Courses</a>
+        <a href="notes.html" class="active">Study Notes</a>
+        <a href="resources.html">Resources</a>
+    </nav>
+</header>
+
+<section class="notes-hero">
+    <div>
+        <span>YOUR LEARNING STARTS HERE</span>
+        <h1>Study Notes and Learning Materials</h1>
+        <p>
+            Access simplified study notes, organised subjects
+            and learning materials to support your journey
+            in health science education.
+        </p>
+    </div>
+</section>
+
+<section class="notes-search-section">
+    <h2>Find Your Study Materials</h2>
+
+    <input
+        type="text"
+        id="notesSearch"
+        placeholder="Search subjects or study notes..."
+        onkeyup="searchNotes()"
+    >
+</section>
+
+<section class="notes-categories">
+    <h2>Explore Programmes</h2>
+    <p class="notes-description">
+        Choose your programme to explore its study materials.
+    </p>
+
+    <div class="notes-programme-grid">
+
+        <a href="#nursing-notes" class="notes-programme-card">
+            <div>🩺</div>
+            <h3>Nursing Science</h3>
+            <p>Explore nursing subjects and clinical learning materials.</p>
+        </a>
+
+        <a href="#medicine-notes" class="notes-programme-card">
+            <div>🩻</div>
+            <h3>Medicine and Surgery</h3>
+            <p>Explore medical sciences and clinical subjects.</p>
+        </a>
+
+        <a href="#pharmacy-notes" class="notes-programme-card">
+            <div>💊</div>
+            <h3>Pharmacy</h3>
+            <p>Explore medicines, pharmacology and pharmaceutical sciences.</p>
+        </a>
+
+        <a href="#laboratory-notes" class="notes-programme-card">
+            <div>🔬</div>
+            <h3>Medical Laboratory Science</h3>
+            <p>Explore laboratory investigations and diagnostic sciences.</p>
+        </a>
+
+        <a href="#physiotherapy-notes" class="notes-programme-card">
+            <div>🏃</div>
+            <h3>Physiotherapy</h3>
+            <p>Explore movement, rehabilitation and physical therapy.</p>
+        </a>
+
+    </div>
+</section>
+
+<section class="notes-subjects">
+
+    <div class="notes-subject-section" id="nursing-notes">
+        <h2>Nursing Science</h2>
+        <div class="notes-subject-grid">
+            <div class="notes-subject-card">
+                <h3>Anatomy</h3>
+                <p>Human body structures and organ systems.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+
+            <div class="notes-subject-card">
+                <h3>Physiology</h3>
+                <p>Functions of the human body.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+
+            <div class="notes-subject-card">
+                <h3>Biochemistry</h3>
+                <p>Chemical processes in living organisms.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+
+            <div class="notes-subject-card">
+                <h3>Fundamentals of Nursing</h3>
+                <p>Basic principles and practices of nursing care.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
         </div>
     </div>
-    
+
+    <div class="notes-subject-section" id="medicine-notes">
+        <h2>Medicine and Surgery</h2>
+        <div class="notes-subject-grid">
+            <div class="notes-subject-card">
+                <h3>Anatomy</h3>
+                <p>Structure of the human body.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+
+            <div class="notes-subject-card">
+                <h3>Physiology</h3>
+                <p>Normal functioning of body systems.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+
+            <div class="notes-subject-card">
+                <h3>Pathology</h3>
+                <p>Study of diseases and their effects.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+
+            <div class="notes-subject-card">
+                <h3>Pharmacology</h3>
+                <p>Medicines and their effects on the body.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="notes-subject-section" id="pharmacy-notes">
+        <h2>Pharmacy</h2>
+        <div class="notes-subject-grid">
+            <div class="notes-subject-card">
+                <h3>Pharmacology</h3>
+                <p>Drug actions and effects.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+
+            <div class="notes-subject-card">
+                <h3>Pharmaceutics</h3>
+                <p>Preparation and formulation of medicines.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+
+            <div class="notes-subject-card">
+                <h3>Pharmaceutical Chemistry</h3>
+                <p>Chemical properties of medicinal substances.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="notes-subject-section" id="laboratory-notes">
+        <h2>Medical Laboratory Science</h2>
+        <div class="notes-subject-grid">
+            <div class="notes-subject-card">
+                <h3>Haematology</h3>
+                <p>Study of blood and blood disorders.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+
+            <div class="notes-subject-card">
+                <h3>Clinical Chemistry</h3>
+                <p>Laboratory analysis of body fluids.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+
+            <div class="notes-subject-card">
+                <h3>Medical Microbiology</h3>
+                <p>Study of microorganisms and infections.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="notes-subject-section" id="physiotherapy-notes">
+        <h2>Physiotherapy</h2>
+        <div class="notes-subject-grid">
+            <div class="notes-subject-card">
+                <h3>Kinesiology</h3>
+                <p>Study of human movement.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+
+            <div class="notes-subject-card">
+                <h3>Biomechanics</h3>
+                <p>Mechanical principles of body movement.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+
+            <div class="notes-subject-card">
+                <h3>Exercise Therapy</h3>
+                <p>Therapeutic exercises used in rehabilitation.</p>
+                <span>Study Materials Coming Soon</span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="notes-cta">
+    <h2>Learn Better. Understand More.</h2>
+    <p>Quality learning resources for future healthcare professionals.</p>
+    <a href="resources.html">Explore More Resources</a>
+</section>
+
+<footer class="notes-footer">
+    <h3>Health Science Resources</h3>
+    <p>Supporting your journey in health science education.</p>
+    <p>© 2026 Health Science Resources. All rights reserved.</p>
+</footer>
+
+<script>
+function searchNotes() {
+    let input = document.getElementById("notesSearch")
+        .value.toLowerCase();
+
+    let cards = document.querySelectorAll(
+        ".notes-subject-card, .notes-programme-card"
+    );
+
+    cards.forEach(function(card) {
+        let content = card.textContent.toLowerCase();
+
+        card.style.display = content.includes(input)
+            ? ""
+            : "none";
+    });
+}
+</script>
+
 </body>
 </html>
