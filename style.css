@@ -273,34 +273,52 @@ nav a {
 .footer {
     background: #073b91;
     color: white;
-    padding: 35px 8% 15px;
+    padding: 40px 8% 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 25px;
+    width: 100%;
+    box-sizing: border-box;
 }
+
 .footer-brand h2 {
-    margin: 0 0 8px;
+    margin: 0 0 10px;
+    font-size: 23px;
 }
+
 .footer-brand p {
     margin: 0;
+    font-size: 14px;
+    opacity: 0.9;
 }
+
 .footer-links {
     display: flex;
-    gap: 30px;
+    gap: 25px;
+    flex-wrap: wrap;
 }
+
 .footer-links a {
     color: white;
     text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
 }
+
+.footer-links a:hover {
+    color: #cfe2ff;
+}
+
 .footer-social {
     display: flex;
     gap: 12px;
 }
+
 .footer-social span {
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
     background: white;
     color: #073b91;
     border-radius: 50%;
@@ -308,16 +326,17 @@ nav a {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-
 }
+
 .footer-bottom {
     width: 100%;
     text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.3);
-    padding-top: 15px;
-    margin-top: 10px;
-
+    padding-top: 18px;
+    margin-top: 15px;
+    font-size: 14px;
 }
+
 header {
     display: flex;
     justify-content: space-between;
@@ -427,25 +446,7 @@ nav a:hoover {
     color: #555;
     margin-bottom: 30px;
 }
-.course-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-.course-card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px
-rgba(0, 0, 0, 0.1);
-}
-.course-card h3 {
-    color: #0b3d91;
-}
-.course-card p {
-    color: #555;
-    line-height: 1.5;
-}
+
 .features {
     padding: 45px 8%;
     text-align: center;
@@ -489,22 +490,36 @@ rgba(0, 0, 0, 0.1);
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
+
 .quick-card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px
-    rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    padding: 25px 15px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     text-decoration: none;
     color: #0b3d91;
-    font-size: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 125px;
+    transition: 0.3s ease;
 }
+
 .quick-card span {
     display: block;
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 17px;
     font-weight: bold;
 }
+
+.quick-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.13);
+}
+
 .reviews {
     padding: 45px 8%;
     text-align: center;
@@ -519,21 +534,37 @@ rgba(0, 0, 0, 0.1);
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
+
 .review-card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px
-    rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    padding: 28px 22px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e8eef7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 150px;
+    transition: 0.3s ease;
 }
+
+.review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
+}
+
 .review-card p {
     color: #555;
-    line-height: 1.5;
+    line-height: 1.7;
     font-style: italic;
+    margin-bottom: 18px;
 }
+
 .review-card strong {
     color: #0b3d91;
+    display: block;
 }
+
 .question-dropdown summary {
     display: flex;
     align-items: center;
@@ -1010,22 +1041,31 @@ mask-image: linear-gradient(
         font-size: 17px;
         line-height: 1.5;
     }
-    .hero image {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        max-height: none;
-        position: relative;
-    }
-    .hero-image img {
-        display: block;
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        object-fit: contain;
-        max-height: none;
-        position: relative;
-    }
+   .hero-image {
+    background: #f5f7fb;
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    -webkit-mask-image: radial-gradient(
+        ellipse at center,
+        black 25%,
+        rgba(0, 0, 0, 0.8) 50%,
+        transparent 100%
+    );
+
+    mask-image: radial-gradient(
+        ellipse at center,
+        black 25%,
+        rgba(0, 0, 0, 0.8) 50%,
+        transparent 100%
+    );
+}
     header {
         width: 100%;
         max-width: 100%;
@@ -1077,3 +1117,5911 @@ p, li {
     
 }
 
+/* =================================
+   NEW HOMEPAGE HEADER AND HERO DESIGN
+================================= */
+
+/* GENERAL FONT */
+* {
+    font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+.main-header {
+    background: #073b91;
+    padding: 14px 6%;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+    position: relative;
+    z-index: 10;
+}
+
+.header-container {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 21px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.brand-icon {
+    font-size: 29px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    transition: 0.3s;
+}
+
+.main-nav a:hover {
+    color: #ffd21c;
+}
+
+.main-nav .nav-signup {
+    background: #ffd21c;
+    color: #073b91;
+    padding: 11px 19px;
+    border-radius: 6px;
+}
+
+.main-nav .nav-signup:hover {
+    background: white;
+    color: #073b91;
+}
+
+/* HERO SECTION */
+.hero {
+    background: #f0f6ff;
+    color: #172b4d;
+    padding: 55px 6%;
+    min-height: 390px;
+    height: auto;
+    margin: 0;
+    display: block;
+    text-align: left;
+    overflow: hidden;
+}
+
+.hero-container {
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 580px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-tag {
+    display: inline-block;
+    color: #0b5ed7;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    color: #092d62;
+    font-size: 43px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    font-weight: 800;
+}
+
+.hero h1 span {
+    display: block;
+    color: #0b5ed7;
+}
+
+.hero p {
+    color: #53647c;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.hero-btn {
+    display: inline-block;
+    background: #073b91;
+    color: white;
+    padding: 14px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    background: #0b5ed7;
+    transform: translateY(-2px);
+}
+
+.hero-btn.secondary-btn {
+    background: white;
+    color: #073b91;
+    border: 1px solid #073b91;
+}
+
+.hero-btn.secondary-btn:hover {
+    background: #e4efff;
+}
+
+.hero-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 25px;
+    color: #53647c;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* HERO IMAGE */
+.hero-image {
+    width: 100%;
+    height: 330px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.hero-image {
+    background: #f5f7fb;
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    -webkit-mask-image: radial-gradient(
+        ellipse at center,
+        black 25%,
+        rgba(0, 0, 0, 0.8) 50%,
+        transparent 100%
+    );
+
+    mask-image: radial-gradient(
+        ellipse at center,
+        black 25%,
+        rgba(0, 0, 0, 0.8) 50%,
+        transparent 100%
+    );
+}
+/* TABLET */
+@media (max-width: 900px) {
+
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .main-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .hero-container {
+        gap: 25px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero-image {
+        height: 280px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+    .main-header {
+        padding: 14px 12px;
+    }
+
+    .brand {
+        font-size: 18px;
+        white-space: normal;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .main-nav {
+        gap: 8px 14px;
+        width: 100%;
+    }
+
+    .main-nav a {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .main-nav .nav-signup {
+        padding: 8px 12px;
+    }
+
+    .hero {
+        padding: 30px 18px;
+        min-height: auto;
+    }
+
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-tag {
+        font-size: 13px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .hero-buttons {
+        gap: 10px;
+    }
+
+    .hero-btn {
+        font-size: 13px;
+        padding: 12px 15px;
+    }
+
+    .hero-trust {
+        gap: 12px;
+        font-size: 11px;
+    }
+
+    .hero-image {
+        width: 100%;
+        height: 230px;
+    }
+}
+
+/* COURSE SECTION REDESIGN */
+
+.courses {
+    padding: 65px 6%;
+    background: #ffffff;
+}
+
+.courses-heading {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 40px;
+}
+
+.courses-heading > span {
+    color: #0b5ed7;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.courses-heading h2 {
+    color: #092d62;
+    font-size: 32px;
+    margin: 12px 0;
+}
+
+.courses-heading p {
+    color: #64748b;
+    line-height: 1.7;
+    font-size: 15px;
+}
+/* COURSE CARDS */
+.course-container {
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.course-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 270px;
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    text-decoration: none;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(7, 59, 145, 0.12);
+    border-color: #0b5ed7;
+}
+
+.course-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eaf1ff;
+    border-radius: 14px;
+    font-size: 29px;
+    margin-bottom: 20px;
+}
+
+.course-card h3 {
+    color: #092d62;
+    font-size: 19px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.course-card p {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.course-link {
+    color: #0b5ed7;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .course-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .courses {
+        padding: 45px 16px;
+    }
+
+    .courses-heading h2 {
+        font-size: 25px;
+    }
+
+    .course-card {
+        padding: 18px;
+    }
+
+    .course-card h3 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 380px) {
+    .course-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* FEATURES SECTION */
+.features {
+    padding: 50px 8%;
+    text-align: center;
+}
+
+.features h2 {
+    margin-bottom: 30px;
+    color: #0757c9;
+}
+
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    text-align: left;
+}
+
+.feature-card h3 {
+    margin-bottom: 12px;
+    color: #0757c9;
+}
+
+.feature-card p {
+    line-height: 1.6;
+    color: #555;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .features-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ASK A STUDENT PAGE */
+
+.ask-student {
+    padding: 60px 8%;
+    background: #f5f7fb;
+    min-height: 75vh;
+    text-align: center;
+}
+
+.ask-student h2 {
+    color: #0757c9;
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+.ask-intro {
+    max-width: 650px;
+    margin: 0 auto 35px;
+    color: #555;
+    line-height: 1.7;
+}
+
+.ask-container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    text-align: left;
+}
+
+#questionForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#questionForm label {
+    font-weight: bold;
+    color: #333;
+}
+
+#questionForm input,
+#questionForm textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+#questionForm button {
+    background: #0757c9;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#questionForm button:hover {
+    background: #0645a0;
+}
+
+@media (max-width: 600px) {
+    .ask-student {
+        padding: 40px 5%;
+    }
+
+    .ask-container {
+        padding: 20px;
+    }
+}
+
+/* ANSWERED QUESTIONS SECTION */
+
+.answered-questions {
+    padding: 50px 8%;
+    background: white;
+    text-align: center;
+}
+
+.answered-questions h2 {
+    color: #0757c9;
+    margin-bottom: 15px;
+}
+
+.answered-questions > p {
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+#publishedQuestions {
+    max-width: 750px;
+    margin: auto;
+}
+
+.empty-questions {
+    background: #f5f7fb;
+    padding: 25px;
+    border-radius: 10px;
+    color: #666;
+    line-height: 1.6;
+}
+
+
+/* ADMIN DASHBOARD */
+
+.admin-dashboard {
+    padding: 50px 8%;
+    background: #f5f7fb;
+    min-height: 75vh;
+}
+
+.admin-dashboard > h2 {
+    color: #0757c9;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.admin-intro {
+    text-align: center;
+    color: #666;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.admin-card {
+    background: white;
+    padding: 25px 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+.admin-card h3 {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.admin-card p {
+    color: #0757c9;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.question-management {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+.question-management h3 {
+    color: #0757c9;
+    margin-bottom: 20px;
+}
+
+#adminQuestions {
+    color: #666;
+    line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+    .admin-dashboard {
+        padding: 35px 5%;
+    }
+
+    .admin-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .admin-card {
+        padding: 20px;
+    }
+}
+
+/* =====================================
+   MOBILE LAYOUT CORRECTIONS
+   ===================================== */
+
+@media screen and (max-width: 768px) {
+
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .product-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 15px !important;
+    }
+
+    .notes-categories,
+    .resource-container,
+    .subject-questions,
+    .quick-container,
+    .features-container,
+    .feature-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 15px;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .review-container {
+        grid-template-columns: 1fr;
+    }
+
+    .course-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product,
+    .category,
+    .resource-card,
+    .question-subject,
+    .feature-card,
+    .quick-card,
+    .review-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .section-title h2,
+    .courses-heading h2 {
+        font-size: 25px;
+    }
+
+    .question-card {
+        margin: 15px 5%;
+    }
+
+    .checkout-page {
+        width: 92%;
+        margin: 25px auto;
+        padding: 20px;
+    }
+}
+
+/* SMALL PHONES */
+
+@media screen and (max-width: 480px) {
+
+    .product-container,
+    .notes-categories,
+    .resource-container,
+    .subject-questions,
+    .features-container,
+    .feature-container,
+    .course-container {
+        grid-template-columns: 1fr !important;
+    }
+
+    .quick-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .products,
+    .PRODUCTS,
+    .resources,
+    .courses,
+    .features,
+    .quick-access,
+    .reviews,
+    .questions {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .product img,
+    .product-img {
+        height: 190px;
+    }
+
+    .category,
+    .resource-card,
+    .feature-card,
+    .course-card {
+        padding: 18px;
+    }
+
+    .ask-student,
+    .admin-dashboard {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .quick-access {
+        padding: 35px 5%;
+    }
+
+    .quick-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .quick-card {
+        padding: 20px 10px;
+        min-height: 110px;
+        font-size: 27px;
+    }
+
+    .quick-card span {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .reviews {
+        padding: 35px 5%;
+    }
+
+    .review-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .review-card {
+        min-height: auto;
+        padding: 22px;
+    }
+
+    .reviews h2 {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 35px 20px 18px;
+        gap: 22px;
+    }
+
+    .footer-brand,
+    .footer-links,
+    .footer-social {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .footer-links {
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+
+    .footer-bottom {
+        font-size: 12px;
+    }
+}
+
+/* =====================================
+   NURSING SCIENCE PAGE DESIGN
+===================================== */
+
+.bsn-hero {
+    background: linear-gradient(135deg, #eaf2ff, #f5f7fb);
+    padding: 90px 8%;
+    text-align: center;
+}
+
+.bsn-hero-content {
+    max-width: 850px;
+    margin: auto;
+}
+
+.bsn-label,
+.bsn-section-heading span,
+.bsn-practice-content > span {
+    color: #0757c9;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+.bsn-hero h1 {
+    font-size: 46px;
+    color: #12315b;
+    margin: 20px 0;
+}
+
+.bsn-hero h1 span {
+    color: #0757c9;
+    display: block;
+}
+
+.bsn-hero p {
+    max-width: 700px;
+    margin: 0 auto 28px;
+    line-height: 1.8;
+    color: #555;
+}
+
+.bsn-intro {
+    max-width: 1000px;
+    margin: auto;
+    padding: 70px 25px;
+    text-align: center;
+}
+
+.bsn-intro h2 {
+    color: #12315b;
+    margin-bottom: 20px;
+}
+
+.bsn-intro p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.bsn-learning,
+.bsn-subjects,
+.bsn-careers {
+    padding: 75px 8%;
+    background: #f5f7fb;
+}
+
+.bsn-section-heading {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 40px;
+}
+
+.bsn-section-heading h2 {
+    color: #12315b;
+    font-size: 30px;
+    margin: 15px 0;
+}
+
+.bsn-section-heading p {
+    color: #666;
+    line-height: 1.7;
+}
+
+.bsn-learning-grid,
+.subject-container,
+.bsn-career-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.bsn-learning-card,
+.subject-card,
+.bsn-career-card {
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease;
+    min-width: 0;
+}
+
+.bsn-learning-card:hover,
+.subject-card:hover,
+.bsn-career-card:hover {
+    transform: translateY(-5px);
+}
+
+.bsn-card-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.bsn-learning-card h3,
+.subject-card h3,
+.bsn-career-card h3 {
+    color: #0757c9;
+    margin-bottom: 12px;
+}
+
+.bsn-learning-card p,
+.subject-card p,
+.bsn-career-card p {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* CLINICAL PRACTICE */
+
+.bsn-practice {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+    padding: 80px 8%;
+    background: white;
+}
+
+.bsn-practice-content,
+.bsn-practice-image {
+    flex: 1;
+    min-width: 0;
+}
+
+.bsn-practice-content h2 {
+    color: #12315b;
+    font-size: 30px;
+    margin: 15px 0;
+}
+
+.bsn-practice-content p,
+.bsn-practice-content li {
+    color: #555;
+    line-height: 1.8;
+}
+
+.bsn-practice-content ul {
+    padding-left: 22px;
+    margin-top: 18px;
+}
+
+.bsn-practice-image img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+/* CALL TO ACTION */
+
+.bsn-cta {
+    text-align: center;
+    padding: 70px 8%;
+    background: #eaf2ff;
+}
+
+.bsn-cta h2 {
+    color: #12315b;
+    margin-bottom: 15px;
+}
+
+.bsn-cta p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* TABLET RESPONSIVENESS */
+
+@media (max-width: 900px) {
+    .bsn-learning-grid,
+    .subject-container,
+    .bsn-career-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bsn-practice {
+        gap: 25px;
+    }
+
+    .bsn-hero h1 {
+        font-size: 38px;
+    }
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 600px) {
+    .bsn-hero {
+        padding: 60px 20px;
+    }
+
+    .bsn-hero h1 {
+        font-size: 32px;
+    }
+
+    .bsn-learning,
+    .bsn-subjects,
+    .bsn-careers {
+        padding: 55px 20px;
+    }
+
+    .bsn-learning-grid,
+    .subject-container,
+    .bsn-career-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bsn-practice {
+        flex-direction: column;
+        padding: 55px 20px;
+    }
+
+    .bsn-practice-image {
+        width: 100%;
+    }
+
+    .bsn-practice-image img {
+        height: 250px;
+    }
+
+    .bsn-section-heading h2 {
+        font-size: 25px;
+    }
+}
+
+/* =====================================
+   NURSING SCIENCE PAGE FINISHING TOUCHES
+===================================== */
+
+/* HERO AND CTA BUTTONS */
+
+.bsn-hero a,
+.bsn-cta a {
+    display: inline-block;
+    background: #0757c9;
+    color: white;
+    text-decoration: none;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.bsn-hero a:hover,
+.bsn-cta a:hover {
+    background: #12315b;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(7, 87, 201, 0.2);
+}
+
+/* SUBJECT CARD DETAILS */
+
+.subject-card {
+    border: 1px solid #edf0f5;
+    transition: all 0.3s ease;
+}
+
+.subject-card:hover {
+    border-color: #0757c9;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.09);
+}
+
+/* LEARNING AND CAREER CARDS */
+
+.bsn-learning-card:hover,
+.bsn-career-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.09);
+}
+
+/* FOOTER */
+
+.footer {
+    background: #102b50;
+    color: white;
+    padding: 45px 8%;
+    text-align: center;
+}
+
+.footer p {
+    color: #dce6f5;
+    line-height: 1.8;
+}
+
+/* MOBILE BUTTONS */
+
+@media (max-width: 600px) {
+    .bsn-hero a,
+    .bsn-cta a {
+        padding: 13px 24px;
+        font-size: 14px;
+    }
+}
+
+/* =====================================
+   NURSING SUBJECT CATALOGUE
+===================================== */
+
+.bsn-subjects {
+    background: #f0f5fc;
+}
+
+.bsn-subjects .subject-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.subject-card {
+    position: relative;
+    padding: 30px 25px;
+    background: #ffffff;
+    border: 1px solid #e3eaf5;
+    border-radius: 16px;
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.subject-card::before {
+    content: "";
+    width: 42px;
+    height: 4px;
+    background: #0757c9;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.subject-card h3 {
+    font-size: 19px;
+    color: #12315b;
+    margin-bottom: 12px;
+}
+
+.subject-card p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #657184;
+}
+
+.subject-card:hover {
+    transform: translateY(-7px);
+    border-color: #0757c9;
+    box-shadow: 0 12px 28px rgba(7, 87, 201, 0.12);
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .bsn-subjects .subject-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* PHONE */
+
+@media (max-width: 600px) {
+    .bsn-subjects .subject-container {
+        grid-template-columns: 1fr;
+    }
+
+    .subject-card {
+        min-height: 150px;
+    }
+}
+
+/* =====================================
+   NURSING SUBJECT CATALOGUE
+===================================== */
+
+.bsn-subjects {
+    background: #f0f5fc;
+}
+
+.bsn-subjects .subject-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.subject-card {
+    position: relative;
+    padding: 30px 25px;
+    background: #ffffff;
+    border: 1px solid #e3eaf5;
+    border-radius: 16px;
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.subject-card::before {
+    content: "";
+    width: 42px;
+    height: 4px;
+    background: #0757c9;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.subject-card h3 {
+    font-size: 19px;
+    color: #12315b;
+    margin-bottom: 12px;
+}
+
+.subject-card p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #657184;
+}
+
+.subject-card:hover {
+    transform: translateY(-7px);
+    border-color: #0757c9;
+    box-shadow: 0 12px 28px rgba(7, 87, 201, 0.12);
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .bsn-subjects .subject-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* PHONE */
+
+@media (max-width: 600px) {
+    .bsn-subjects .subject-container {
+        grid-template-columns: 1fr;
+    }
+
+    .subject-card {
+        min-height: 150px;
+    }
+}
+
+/* =====================================
+   CLINICAL PRACTICE SECTION
+===================================== */
+
+.bsn-practice {
+    background: #ffffff;
+    padding: 90px 8%;
+    gap: 60px;
+}
+
+.bsn-practice-content {
+    max-width: 600px;
+}
+
+.bsn-practice-content h2 {
+    font-size: 34px;
+    line-height: 1.3;
+    color: #12315b;
+}
+
+.bsn-practice-content p {
+    font-size: 16px;
+    margin: 18px 0;
+}
+
+.bsn-practice-content ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 25px;
+}
+
+.bsn-practice-content li {
+    position: relative;
+    padding: 13px 15px 13px 42px;
+    margin-bottom: 12px;
+    background: #f0f5fc;
+    border-radius: 8px;
+    color: #34445b;
+}
+
+.bsn-practice-content li::before {
+    content: "✓";
+    position: absolute;
+    left: 15px;
+    color: #0757c9;
+    font-weight: bold;
+}
+
+.bsn-practice-image {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(18, 49, 91, 0.12);
+}
+
+.bsn-practice-image img {
+    display: block;
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.bsn-practice-image img:hover {
+    transform: scale(1.04);
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .bsn-practice {
+        padding: 60px 20px;
+        gap: 30px;
+    }
+
+    .bsn-practice-content h2 {
+        font-size: 27px;
+    }
+
+    .bsn-practice-image img {
+        height: 240px;
+    }
+}
+
+/* =====================================
+   CAREER OPPORTUNITIES SECTION
+===================================== */
+
+.bsn-careers {
+    background: #f0f5fc;
+    padding: 85px 8%;
+}
+
+.bsn-career-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.bsn-career-card {
+    background: #ffffff;
+    padding: 30px 22px;
+    border: 1px solid #e5ebf4;
+    border-radius: 15px;
+    min-height: 190px;
+    transition: all 0.3s ease;
+}
+
+.bsn-career-card h3 {
+    color: #12315b;
+    font-size: 19px;
+    margin-bottom: 15px;
+}
+
+.bsn-career-card p {
+    color: #657184;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.bsn-career-card:hover {
+    transform: translateY(-6px);
+    border-color: #0757c9;
+    box-shadow: 0 12px 25px rgba(7, 87, 201, 0.1);
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    .bsn-career-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* PHONE */
+
+@media (max-width: 600px) {
+    .bsn-careers {
+        padding: 55px 20px;
+    }
+
+    .bsn-career-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================
+   NURSING SCIENCE HEADER
+===================================== */
+
+.main-header {
+    background: #ffffff;
+    padding: 18px 8%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.header-container {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.brand {
+    color: #12315b;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.main-nav a {
+    color: #34445b;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #0757c9;
+}
+
+/* TABLET AND PHONE */
+
+@media (max-width: 768px) {
+    .main-header {
+        padding: 15px 20px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .main-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px 18px;
+    }
+
+    .main-nav a {
+        font-size: 13px;
+    }
+}
+
+/* =====================================
+   FINAL NURSING PAGE POLISH
+===================================== */
+
+/* Smooth scrolling */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Consistent section headings */
+
+.bsn-section-heading h2,
+.bsn-intro h2,
+.bsn-cta h2 {
+    line-height: 1.3;
+}
+
+/* Prevent content overflow */
+
+.bsn-hero,
+.bsn-intro,
+.bsn-learning,
+.bsn-subjects,
+.bsn-practice,
+.bsn-careers,
+.bsn-cta {
+    overflow: hidden;
+}
+
+/* Consistent card text */
+
+.bsn-learning-card,
+.subject-card,
+.bsn-career-card {
+    overflow-wrap: break-word;
+}
+
+/* Footer refinement */
+
+.footer {
+    background: #102b50;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.footer p {
+    max-width: 750px;
+    margin: auto;
+}
+
+/* Small phone screens */
+
+@media (max-width: 400px) {
+    .bsn-hero h1 {
+        font-size: 28px;
+    }
+
+    .bsn-section-heading h2 {
+        font-size: 23px;
+    }
+
+    .bsn-learning-card,
+    .subject-card,
+    .bsn-career-card {
+        padding: 22px 18px;
+    }
+}
+
+/* =====================================
+   NURSING SCIENCE PAGE DESIGN
+===================================== */
+
+.nursing-page {
+    background: #ffffff;
+    color: #09275e;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.nursing-page * {
+    box-sizing: border-box;
+}
+
+/* NAVIGATION */
+
+.nursing-header {
+    min-height: 82px;
+    padding: 12px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: #ffffff;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.nursing-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #063d9c;
+    text-decoration: none;
+    min-width: 220px;
+}
+
+.brand-icon {
+    font-size: 48px;
+    font-weight: bold;
+    color: #0758c9;
+}
+
+.nursing-brand strong {
+    display: block;
+    font-size: 21px;
+}
+
+.nursing-brand small {
+    display: block;
+    color: #16376d;
+    margin-top: 4px;
+}
+
+.nursing-nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.nursing-nav a {
+    text-decoration: none;
+    color: #09275e;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nursing-nav a:hover {
+    color: #0874e8;
+}
+
+
+/* HERO SECTION */
+
+.nursing-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 370px;
+    background: linear-gradient(115deg, #003b88, #0764c9);
+    color: white;
+    overflow: hidden;
+}
+
+.nursing-hero-text {
+    padding: 55px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.nursing-eyebrow {
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #b8d8ff;
+    margin-bottom: 15px;
+}
+
+.nursing-hero-text h1 {
+    font-size: clamp(42px, 5vw, 68px);
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.nursing-hero-text h1 span {
+    color: #ffdb00;
+}
+
+.nursing-hero-text h2 {
+    font-size: clamp(22px, 3vw, 32px);
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.nursing-hero-text p {
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 540px;
+    margin-bottom: 22px;
+}
+
+.nursing-yellow-btn {
+    display: inline-block;
+    background: #ffdc00;
+    color: #09275e;
+    padding: 14px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nursing-yellow-btn:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
+}
+
+.nursing-hero-image {
+    min-height: 370px;
+}
+
+.nursing-hero-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 370px;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* COURSE OVERVIEW */
+
+.nursing-courses {
+    padding: 30px 3%;
+    background: #ffffff;
+}
+
+.nursing-section-title {
+    text-align: center;
+    font-size: 30px;
+    color: #092e77;
+    margin-bottom: 25px;
+}
+
+.nursing-course-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.nursing-course-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 17px 12px;
+    background: #e4efff;
+    border: 1px solid #c6dcff;
+    border-radius: 14px;
+    transition: 0.3s;
+}
+
+.nursing-course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 70, 160, 0.15);
+}
+
+.nursing-course-card > span {
+    font-size: 38px;
+    flex-shrink: 0;
+}
+
+.nursing-course-card h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #09275e;
+}
+
+.nursing-course-card p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #263b5d;
+}
+
+
+/* BENEFITS SECTION */
+
+.nursing-benefits {
+    margin: 0 3% 15px;
+    padding: 25px 20px;
+    background: #e0edff;
+    border-radius: 18px;
+    border: 1px solid #c2dcff;
+}
+
+.nursing-benefits > h2 {
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 25px;
+    color: #092e77;
+}
+
+.nursing-benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.nursing-benefit {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px;
+    border-right: 1px solid #8bb8f7;
+}
+
+.nursing-benefit:last-child {
+    border-right: none;
+}
+
+.nursing-benefit > span {
+    font-size: 38px;
+    flex-shrink: 0;
+}
+
+.nursing-benefit h3 {
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+.nursing-benefit p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* CALL TO ACTION */
+
+.nursing-cta {
+    margin: 12px 3%;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: linear-gradient(100deg, #003b88, #0868d4);
+    color: white;
+    border-radius: 17px;
+}
+
+.nursing-cta > span {
+    font-size: 45px;
+}
+
+.nursing-cta h2 {
+    font-size: 25px;
+    font-style: italic;
+}
+
+.nursing-cta a {
+    padding: 13px 22px;
+    background: #ffffff;
+    color: #0644a1;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.nursing-cta a:hover {
+    background: #ffdc00;
+}
+
+
+/* FOOTER */
+
+.nursing-footer {
+    margin-top: 15px;
+    padding: 30px 5% 15px;
+    background: #001b49;
+    color: white;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 25px;
+    align-items: center;
+}
+
+.nursing-footer h2 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.nursing-footer h3 {
+    margin-bottom: 12px;
+}
+
+.footer-brand p,
+.footer-message p {
+    margin-top: 5px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-links h3 {
+    width: 100%;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: #ffdc00;
+}
+
+.footer-message {
+    text-align: right;
+    font-size: 20px;
+    font-style: italic;
+}
+
+.footer-copyright {
+    grid-column: 1 / -1;
+    text-align: center;
+    border-top: 1px solid #42618c;
+    padding-top: 15px;
+    font-size: 13px;
+}
+
+
+/* TABLET RESPONSIVENESS */
+
+@media (max-width: 1000px) {
+
+    .nursing-header {
+        flex-direction: column;
+    }
+
+    .nursing-course-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nursing-benefit-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nursing-benefit:nth-child(2) {
+        border-right: none;
+    }
+
+    .nursing-footer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 600px) {
+
+    .nursing-header {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .nursing-brand strong {
+        font-size: 18px;
+    }
+
+    .nursing-nav {
+        justify-content: center;
+        gap: 13px;
+    }
+
+    .nursing-nav a {
+        font-size: 12px;
+    }
+
+    .nursing-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .nursing-hero-text {
+        padding: 40px 22px;
+    }
+
+    .nursing-hero-text h1 {
+        font-size: 43px;
+    }
+
+    .nursing-hero-text p {
+        font-size: 15px;
+    }
+
+    .nursing-hero-image {
+        min-height: 240px;
+    }
+
+    .nursing-hero-image img {
+        min-height: 240px;
+        max-height: 280px;
+    }
+
+    .nursing-course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nursing-course-card {
+        padding: 18px;
+    }
+
+    .nursing-benefits {
+        padding: 20px 12px;
+    }
+
+    .nursing-benefit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nursing-benefit {
+        border-right: none;
+        border-bottom: 1px solid #8bb8f7;
+    }
+
+    .nursing-benefit:last-child {
+        border-bottom: none;
+    }
+
+    .nursing-cta {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nursing-cta h2 {
+        font-size: 22px;
+    }
+
+    .nursing-footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+
+    .footer-message {
+        text-align: center;
+    }
+
+    .footer-copyright {
+        grid-column: 1;
+    }
+}
+
+/* =====================================
+   MEDICINE AND SURGERY PAGE
+===================================== */
+
+.medicine-page {
+    background: #f5f8fc;
+    color: #243247;
+}
+
+/* HERO SECTION */
+.medicine-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
+    padding: 75px 8%;
+    background: #0757c9;
+    color: white;
+}
+
+.medicine-hero-text {
+    max-width: 600px;
+}
+
+.medicine-eyebrow,
+.medicine-intro > span,
+.medicine-subject-heading > span,
+.medicine-clinical-text > span,
+.medicine-careers > span {
+    display: inline-block;
+    color: #f8d84e;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.medicine-hero h1 {
+    font-size: 48px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+}
+
+.medicine-hero h1 span {
+    color: #f8d84e;
+}
+
+.medicine-hero h2 {
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.medicine-hero p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+.medicine-button {
+    display: inline-block;
+    background: #f8d84e;
+    color: #17345c;
+    text-decoration: none;
+    padding: 14px 25px;
+    border-radius: 7px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.medicine-button:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+.medicine-hero-image img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* INTRODUCTION */
+.medicine-intro {
+    text-align: center;
+    padding: 75px 12%;
+    background: white;
+}
+
+.medicine-intro > span,
+.medicine-subject-heading > span,
+.medicine-careers > span {
+    color: #0757c9;
+}
+
+.medicine-intro h2,
+.medicine-heading,
+.medicine-subject-heading h2,
+.medicine-clinical h2,
+.medicine-careers h2 {
+    color: #17345c;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.medicine-intro p {
+    max-width: 850px;
+    margin: 12px auto;
+    line-height: 1.8;
+    color: #586579;
+}
+
+/* OVERVIEW */
+.medicine-overview {
+    padding: 70px 8%;
+}
+
+.medicine-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.medicine-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.medicine-overview-card {
+    background: white;
+    padding: 28px 22px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+
+.medicine-overview-card:hover,
+.medicine-subject-card:hover,
+.medicine-skill-card:hover,
+.medicine-career-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.medicine-overview-card span,
+.medicine-skill-card span {
+    font-size: 35px;
+}
+
+.medicine-overview-card h3,
+.medicine-skill-card h3,
+.medicine-career-card h3 {
+    color: #0757c9;
+    margin: 15px 0 10px;
+}
+
+.medicine-overview-card p,
+.medicine-skill-card p,
+.medicine-career-card p {
+    color: #647084;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* SUBJECTS */
+.medicine-subjects {
+    padding: 75px 8%;
+    background: white;
+}
+
+.medicine-subject-heading {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 40px;
+}
+
+.medicine-subject-heading p {
+    color: #647084;
+    line-height: 1.7;
+}
+
+.medicine-subject-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.medicine-subject-card {
+    background: #f5f8fc;
+    border-left: 4px solid #0757c9;
+    padding: 25px;
+    border-radius: 9px;
+    transition: 0.3s;
+}
+
+.medicine-subject-card h3 {
+    color: #0757c9;
+    margin-bottom: 10px;
+}
+
+.medicine-subject-card p {
+    color: #647084;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* CLINICAL LEARNING */
+.medicine-clinical {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+    align-items: center;
+    padding: 75px 8%;
+}
+
+.medicine-clinical-text > span {
+    color: #0757c9;
+}
+
+.medicine-clinical-text p {
+    line-height: 1.8;
+    color: #647084;
+    margin-bottom: 20px;
+}
+
+.medicine-clinical-text ul {
+    padding-left: 22px;
+    line-height: 2;
+    color: #43536b;
+}
+
+.medicine-clinical-image img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+/* SKILLS */
+.medicine-skills {
+    padding: 75px 8%;
+    background: white;
+}
+
+.medicine-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.medicine-skill-card {
+    background: #f5f8fc;
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+/* CAREERS */
+.medicine-careers {
+    padding: 75px 8%;
+    text-align: center;
+}
+
+.medicine-careers > p {
+    max-width: 750px;
+    margin: 0 auto 35px;
+    line-height: 1.8;
+    color: #647084;
+}
+
+.medicine-career-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.medicine-career-card {
+    background: white;
+    padding: 25px 18px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+/* CALL TO ACTION */
+.medicine-cta {
+    text-align: center;
+    padding: 65px 8%;
+    background: #0757c9;
+    color: white;
+}
+
+.medicine-cta h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.medicine-cta p {
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.medicine-cta a {
+    display: inline-block;
+    background: #f8d84e;
+    color: #17345c;
+    padding: 14px 25px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1000px) {
+    .medicine-overview-grid,
+    .medicine-skills-grid,
+    .medicine-career-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .medicine-subject-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .medicine-hero,
+    .medicine-clinical {
+        grid-template-columns: 1fr;
+        padding: 45px 6%;
+    }
+
+    .medicine-hero h1 {
+        font-size: 36px;
+    }
+
+    .medicine-hero-image img,
+    .medicine-clinical-image img {
+        height: 250px;
+    }
+
+    .medicine-intro,
+    .medicine-overview,
+    .medicine-subjects,
+    .medicine-skills,
+    .medicine-careers {
+        padding: 50px 6%;
+    }
+
+    .medicine-overview-grid,
+    .medicine-subject-grid,
+    .medicine-skills-grid,
+    .medicine-career-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .medicine-intro h2,
+    .medicine-heading,
+    .medicine-subject-heading h2,
+    .medicine-clinical h2,
+    .medicine-careers h2 {
+        font-size: 25px;
+    }
+}
+
+/* COMPACT MEDICINE PAGE */
+
+.medicine-hero {
+    gap: 30px;
+    padding: 45px 8%;
+}
+
+.medicine-hero h1 {
+    font-size: 36px;
+}
+
+.medicine-hero h2 {
+    font-size: 19px;
+}
+
+.medicine-hero p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.medicine-hero-image img {
+    height: 280px;
+}
+
+.medicine-button,
+.medicine-cta a {
+    padding: 11px 20px;
+    font-size: 13px;
+}
+
+.medicine-intro,
+.medicine-overview,
+.medicine-subjects,
+.medicine-skills,
+.medicine-careers {
+    padding: 45px 8%;
+}
+
+.medicine-intro h2,
+.medicine-heading,
+.medicine-subject-heading h2,
+.medicine-clinical h2,
+.medicine-careers h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.medicine-intro p,
+.medicine-subject-heading p,
+.medicine-careers > p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.medicine-overview-grid,
+.medicine-skills-grid,
+.medicine-career-grid {
+    gap: 15px;
+}
+
+.medicine-overview-card,
+.medicine-skill-card,
+.medicine-career-card {
+    padding: 20px 16px;
+}
+
+.medicine-overview-card span,
+.medicine-skill-card span {
+    font-size: 28px;
+}
+
+.medicine-overview-card h3,
+.medicine-skill-card h3,
+.medicine-career-card h3 {
+    font-size: 16px;
+    margin: 10px 0 8px;
+}
+
+.medicine-overview-card p,
+.medicine-skill-card p,
+.medicine-career-card p {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.medicine-subject-grid {
+    gap: 14px;
+}
+
+.medicine-subject-card {
+    padding: 18px;
+}
+
+.medicine-subject-card h3 {
+    font-size: 15px;
+}
+
+.medicine-subject-card p {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.medicine-clinical {
+    gap: 30px;
+    padding: 45px 8%;
+}
+
+.medicine-clinical-text p,
+.medicine-clinical-text ul {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.medicine-clinical-image img {
+    height: 280px;
+}
+
+.medicine-cta {
+    padding: 45px 8%;
+}
+
+.medicine-cta h2 {
+    font-size: 25px;
+}
+
+.medicine-cta p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* SMALL SCREEN */
+@media (max-width: 700px) {
+    .medicine-hero {
+        padding: 35px 6%;
+    }
+
+    .medicine-hero h1 {
+        font-size: 30px;
+    }
+
+    .medicine-hero-image img,
+    .medicine-clinical-image img {
+        height: 220px;
+    }
+
+    .medicine-intro,
+    .medicine-overview,
+    .medicine-subjects,
+    .medicine-skills,
+    .medicine-careers,
+    .medicine-clinical {
+        padding: 35px 6%;
+    }
+}
+
+/* EXTRA COMPACT MEDICINE DESIGN */
+
+.medicine-hero {
+    padding: 30px 8%;
+    gap: 20px;
+}
+
+.medicine-hero h1 {
+    font-size: 28px;
+}
+
+.medicine-hero h2 {
+    font-size: 16px;
+}
+
+.medicine-hero p {
+    font-size: 12px;
+}
+
+.medicine-hero-image img {
+    height: 200px;
+}
+
+.medicine-eyebrow,
+.medicine-intro > span,
+.medicine-subject-heading > span,
+.medicine-clinical-text > span,
+.medicine-careers > span {
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+.medicine-button,
+.medicine-cta a {
+    padding: 9px 15px;
+    font-size: 11px;
+}
+
+.medicine-intro,
+.medicine-overview,
+.medicine-subjects,
+.medicine-skills,
+.medicine-careers,
+.medicine-clinical {
+    padding: 30px 8%;
+}
+
+.medicine-intro h2,
+.medicine-heading,
+.medicine-subject-heading h2,
+.medicine-clinical h2,
+.medicine-careers h2,
+.medicine-cta h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.medicine-intro p,
+.medicine-subject-heading p,
+.medicine-careers > p,
+.medicine-clinical-text p,
+.medicine-clinical-text ul {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.medicine-overview-grid,
+.medicine-subject-grid,
+.medicine-skills-grid,
+.medicine-career-grid {
+    gap: 12px;
+}
+
+.medicine-overview-card,
+.medicine-subject-card,
+.medicine-skill-card,
+.medicine-career-card {
+    padding: 15px;
+}
+
+.medicine-overview-card span,
+.medicine-skill-card span {
+    font-size: 23px;
+}
+
+.medicine-overview-card h3,
+.medicine-subject-card h3,
+.medicine-skill-card h3,
+.medicine-career-card h3 {
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.medicine-overview-card p,
+.medicine-subject-card p,
+.medicine-skill-card p,
+.medicine-career-card p {
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.medicine-clinical {
+    gap: 20px;
+}
+
+.medicine-clinical-image img {
+    height: 200px;
+}
+
+.medicine-cta {
+    padding: 30px 8%;
+}
+
+.medicine-cta p {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+    .medicine-hero {
+        padding: 25px 6%;
+    }
+
+    .medicine-hero h1 {
+        font-size: 25px;
+    }
+
+    .medicine-hero-image img,
+    .medicine-clinical-image img {
+        height: 180px;
+    }
+
+    .medicine-intro,
+    .medicine-overview,
+    .medicine-subjects,
+    .medicine-skills,
+    .medicine-careers,
+    .medicine-clinical {
+        padding: 25px 6%;
+    }
+}
+
+/* =====================================
+   PHARMACY PAGE DESIGN
+===================================== */
+
+.pharmacy-page {
+    background: #f5f8fc;
+    color: #17345c;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVIGATION */
+.pharmacy-header {
+    background: #0647a8;
+    color: white;
+    padding: 12px 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.pharmacy-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.pharmacy-brand > span {
+    color: #ffdc43;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.pharmacy-brand strong {
+    display: block;
+    font-size: 16px;
+}
+
+.pharmacy-brand small {
+    font-size: 11px;
+}
+
+.pharmacy-nav {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.pharmacy-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 14px 12px;
+    transition: 0.3s;
+}
+
+.pharmacy-nav a:hover,
+.pharmacy-nav a.active {
+    background: #ffdc43;
+    color: #17345c;
+}
+
+/* HERO SECTION */
+.pharmacy-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    min-height: 290px;
+    background: #0757c9;
+    color: white;
+    align-items: center;
+    overflow: hidden;
+}
+
+.pharmacy-hero-text {
+    padding: 35px 6%;
+}
+
+.pharmacy-hero-text > span {
+    color: #ffdc43;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.pharmacy-hero h1 {
+    font-size: 42px;
+    margin: 10px 0;
+}
+
+.pharmacy-hero h1 strong {
+    color: #ffdc43;
+}
+
+.pharmacy-hero h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.pharmacy-hero p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 500px;
+    margin-bottom: 18px;
+}
+
+.pharmacy-hero-text a {
+    display: inline-block;
+    background: #ffdc43;
+    color: #17345c;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 11px 20px;
+    border-radius: 25px;
+}
+
+.pharmacy-hero-image {
+    height: 290px;
+}
+
+.pharmacy-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* INTRODUCTION */
+.pharmacy-intro {
+    text-align: center;
+    background: white;
+    padding: 22px 8%;
+}
+
+.pharmacy-intro > span {
+    color: #0757c9;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.pharmacy-intro h2 {
+    font-size: 25px;
+    margin: 8px 0;
+}
+
+.pharmacy-intro p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 750px;
+    margin: auto;
+}
+
+/* OVERVIEW */
+.pharmacy-overview {
+    padding: 25px 4%;
+    background: #edf4ff;
+}
+
+.pharmacy-overview > h2,
+.pharmacy-subjects > h2 {
+    text-align: center;
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.pharmacy-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.pharmacy-card {
+    background: white;
+    padding: 17px 12px;
+    text-align: center;
+    border: 1px solid #d9e7ff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+
+.pharmacy-card:hover {
+    transform: translateY(-4px);
+}
+
+.pharmacy-card span {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 7px;
+}
+
+.pharmacy-card h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.pharmacy-card p {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* SUBJECTS */
+.pharmacy-subjects {
+    background: white;
+    padding: 25px 4%;
+}
+
+.pharmacy-subject-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px 12px;
+}
+
+.pharmacy-subject {
+    background: #dfebff;
+    color: #17345c;
+    padding: 11px 8px;
+    border-radius: 7px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.pharmacy-subject:hover {
+    background: #0757c9;
+    color: white;
+}
+
+/* SKILLS AND CAREERS */
+.pharmacy-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 18px;
+    padding: 25px 4%;
+    background: white;
+    align-items: center;
+}
+
+.pharmacy-skills h2,
+.pharmacy-careers h2 {
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+.pharmacy-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.pharmacy-skill {
+    background: white;
+    border: 1px solid #e1eafa;
+    border-radius: 9px;
+    padding: 13px 7px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.pharmacy-skill span {
+    display: block;
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.pharmacy-skill h3 {
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+/* CAREERS */
+.pharmacy-careers {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 12px;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #e1eafa;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+}
+
+.pharmacy-careers h2 {
+    margin-bottom: 8px;
+}
+
+.pharmacy-careers p {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.pharmacy-careers ul {
+    padding-left: 18px;
+    font-size: 12px;
+    line-height: 1.8;
+    list-style-type: "✓  ";
+}
+
+.pharmacy-career-image img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* STUDY MATERIALS BANNER */
+.pharmacy-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    background: #0757c9;
+    color: white;
+    padding: 20px 4%;
+}
+
+.pharmacy-cta-icon {
+    font-size: 40px;
+}
+
+.pharmacy-cta h2 {
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.pharmacy-cta p {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.pharmacy-cta a {
+    background: #ffdc43;
+    color: #17345c;
+    padding: 12px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* FOOTER */
+.pharmacy-footer {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 25px;
+    align-items: center;
+    background: #09264d;
+    color: white;
+    padding: 25px 4%;
+}
+
+.pharmacy-footer-brand h2 {
+    font-size: 17px;
+}
+
+.pharmacy-footer-brand p {
+    color: #ffdc43;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.pharmacy-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    border-left: 2px solid #ffdc43;
+    padding-left: 20px;
+}
+
+.pharmacy-footer-links h3 {
+    width: 100%;
+    font-size: 14px;
+}
+
+.pharmacy-footer-links a {
+    color: white;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+.pharmacy-footer-message {
+    border-left: 2px solid #ffdc43;
+    padding-left: 20px;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.pharmacy-copyright {
+    grid-column: 1 / -1;
+    border-top: 1px solid #49617e;
+    padding-top: 12px;
+    text-align: center;
+    font-size: 11px;
+}
+
+/* TABLETS */
+@media (max-width: 900px) {
+    .pharmacy-header {
+        flex-direction: column;
+    }
+
+    .pharmacy-overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pharmacy-bottom {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* MOBILE PHONES */
+@media (max-width: 600px) {
+
+    .pharmacy-header {
+        padding: 12px 5%;
+    }
+
+    .pharmacy-nav {
+        justify-content: center;
+    }
+
+    .pharmacy-nav a {
+        font-size: 10px;
+        padding: 9px 7px;
+    }
+
+    .pharmacy-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .pharmacy-hero-text {
+        padding: 28px 6%;
+    }
+
+    .pharmacy-hero h1 {
+        font-size: 31px;
+    }
+
+    .pharmacy-hero h2 {
+        font-size: 17px;
+    }
+
+    .pharmacy-hero p {
+        font-size: 12px;
+    }
+
+    .pharmacy-hero-image {
+        height: 210px;
+    }
+
+    .pharmacy-intro {
+        padding: 25px 6%;
+    }
+
+    .pharmacy-intro h2 {
+        font-size: 21px;
+    }
+
+    .pharmacy-intro p {
+        font-size: 12px;
+    }
+
+    .pharmacy-overview,
+    .pharmacy-subjects {
+        padding: 25px 5%;
+    }
+
+    .pharmacy-overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .pharmacy-subject-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .pharmacy-card {
+        padding: 14px 8px;
+    }
+
+    .pharmacy-card h3 {
+        font-size: 13px;
+    }
+
+    .pharmacy-card p {
+        font-size: 11px;
+    }
+
+    .pharmacy-subject {
+        font-size: 11px;
+        padding: 10px 5px;
+    }
+
+    .pharmacy-bottom {
+        padding: 25px 5%;
+    }
+
+    .pharmacy-skills h2,
+    .pharmacy-careers h2 {
+        font-size: 18px;
+    }
+
+    .pharmacy-careers {
+        grid-template-columns: 1fr;
+    }
+
+    .pharmacy-career-image img {
+        height: 190px;
+    }
+
+    .pharmacy-cta {
+        flex-wrap: wrap;
+        padding: 22px 5%;
+    }
+
+    .pharmacy-cta h2 {
+        font-size: 17px;
+    }
+
+    .pharmacy-cta a {
+        font-size: 11px;
+    }
+
+    .pharmacy-footer {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 25px 6%;
+    }
+
+    .pharmacy-footer-links,
+    .pharmacy-footer-message {
+        border-left: none;
+        padding-left: 0;
+    }
+}
+
+/* =====================================
+   MEDICINE PAGE - MATCH PHARMACY DESIGN
+===================================== */
+
+.medicine-page {
+    background: #f5f8fc;
+    color: #17345c;
+    font-family: Arial, sans-serif;
+}
+
+/* HERO */
+.medicine-hero {
+    padding: 35px 6%;
+    gap: 25px;
+    min-height: 290px;
+}
+
+.medicine-hero h1 {
+    font-size: 36px;
+}
+
+.medicine-hero h2 {
+    font-size: 19px;
+}
+
+.medicine-hero p {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.medicine-hero-image img {
+    height: 280px;
+    border-radius: 10px;
+}
+
+.medicine-button {
+    padding: 11px 19px;
+    font-size: 12px;
+    border-radius: 25px;
+}
+
+/* INTRODUCTION */
+.medicine-intro {
+    padding: 25px 8%;
+}
+
+.medicine-intro h2 {
+    font-size: 24px;
+}
+
+.medicine-intro p {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* OVERVIEW */
+.medicine-overview {
+    padding: 28px 5%;
+    background: #edf4ff;
+}
+
+.medicine-heading {
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.medicine-overview-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.medicine-overview-card {
+    padding: 17px 12px;
+    border-radius: 10px;
+}
+
+.medicine-overview-card span {
+    font-size: 28px;
+}
+
+.medicine-overview-card h3 {
+    font-size: 14px;
+}
+
+.medicine-overview-card p {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* SUBJECTS */
+.medicine-subjects {
+    padding: 30px 5%;
+}
+
+.medicine-subject-heading h2 {
+    font-size: 23px;
+}
+
+.medicine-subject-heading p {
+    font-size: 13px;
+}
+
+.medicine-subject-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.medicine-subject-card {
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.medicine-subject-card h3 {
+    font-size: 14px;
+}
+
+.medicine-subject-card p {
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* CLINICAL LEARNING */
+.medicine-clinical {
+    padding: 30px 5%;
+    gap: 25px;
+    background: #edf4ff;
+}
+
+.medicine-clinical h2 {
+    font-size: 22px;
+}
+
+.medicine-clinical-text p,
+.medicine-clinical-text ul {
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.medicine-clinical-image img {
+    height: 250px;
+    border-radius: 10px;
+}
+
+/* SKILLS */
+.medicine-skills {
+    padding: 30px 5%;
+}
+
+.medicine-skills-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.medicine-skill-card {
+    padding: 16px 10px;
+    border-radius: 9px;
+}
+
+.medicine-skill-card span {
+    font-size: 25px;
+}
+
+.medicine-skill-card h3 {
+    font-size: 13px;
+}
+
+.medicine-skill-card p {
+    font-size: 11px;
+}
+
+/* CAREERS */
+.medicine-careers {
+    padding: 30px 5%;
+    text-align: center;
+    background: #edf4ff;
+}
+
+.medicine-careers h2 {
+    font-size: 23px;
+}
+
+.medicine-careers > p {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.medicine-career-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.medicine-career-card {
+    padding: 17px 12px;
+    border-radius: 9px;
+}
+
+.medicine-career-card h3 {
+    font-size: 14px;
+}
+
+.medicine-career-card p {
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* STUDY MATERIALS BANNER */
+.medicine-cta {
+    padding: 25px 5%;
+}
+
+.medicine-cta h2 {
+    font-size: 22px;
+}
+
+.medicine-cta p {
+    font-size: 12px;
+}
+
+.medicine-cta a {
+    padding: 11px 19px;
+    border-radius: 25px;
+    font-size: 12px;
+}
+
+/* TABLETS */
+@media (max-width: 900px) {
+    .medicine-overview-grid,
+    .medicine-skills-grid,
+    .medicine-career-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .medicine-subject-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .medicine-hero,
+    .medicine-clinical {
+        grid-template-columns: 1fr;
+        padding: 25px 5%;
+    }
+
+    .medicine-hero h1 {
+        font-size: 29px;
+    }
+
+    .medicine-hero-image img,
+    .medicine-clinical-image img {
+        height: 200px;
+    }
+
+    .medicine-overview-grid,
+    .medicine-subject-grid,
+    .medicine-skills-grid,
+    .medicine-career-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .medicine-intro,
+    .medicine-overview,
+    .medicine-subjects,
+    .medicine-skills,
+    .medicine-careers {
+        padding: 25px 5%;
+    }
+
+    .medicine-cta {
+        padding: 25px 5%;
+    }
+
+    .medicine-cta h2 {
+        font-size: 19px;
+    }
+}
+/* MEDICAL LABORATORY SCIENCE PAGE */
+
+.laboratory-page {
+    background: #f5f7fb;
+    color: #263238;
+}
+
+/* HEADER */
+.laboratory-header {
+    background: #0757c9;
+    color: white;
+    padding: 15px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.laboratory-brand {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.laboratory-nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.laboratory-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.laboratory-nav a:hover {
+    color: #ffd43b;
+}
+
+/* HERO */
+.laboratory-hero {
+    background: #0757c9;
+    color: white;
+    padding: 35px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.laboratory-hero-text {
+    flex: 1;
+}
+
+.laboratory-hero-text span {
+    color: #ffd43b;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.laboratory-hero-text h1 {
+    font-size: 36px;
+    margin: 12px 0;
+}
+
+.laboratory-hero-text p {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.laboratory-button {
+    display: inline-block;
+    background: #ffd43b;
+    color: #073b80;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.laboratory-hero-image {
+    flex: 1;
+}
+
+.laboratory-hero-image img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* INTRODUCTION */
+.laboratory-intro {
+    text-align: center;
+    padding: 30px 12%;
+    background: white;
+}
+
+.laboratory-intro h2,
+.laboratory-overview h2,
+.laboratory-subjects h2,
+.laboratory-careers h2 {
+    color: #0757c9;
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.laboratory-intro p {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* OVERVIEW */
+.laboratory-overview {
+    padding: 30px 6%;
+    text-align: center;
+}
+
+.laboratory-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.laboratory-card {
+    background: white;
+    padding: 18px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.laboratory-card h3 {
+    color: #0757c9;
+    font-size: 15px;
+    margin-bottom: 9px;
+}
+
+.laboratory-card p {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* SUBJECTS */
+.laboratory-subjects {
+    background: white;
+    padding: 30px 6%;
+    text-align: center;
+}
+
+.laboratory-subject-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.laboratory-subject {
+    background: #eef4ff;
+    color: #0757c9;
+    padding: 15px 10px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* PRACTICAL LEARNING */
+.laboratory-practice {
+    padding: 35px 6%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: #eef4ff;
+}
+
+.laboratory-practice-text,
+.laboratory-practice-image {
+    flex: 1;
+}
+
+.laboratory-practice-text h2 {
+    color: #0757c9;
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.laboratory-practice-text p,
+.laboratory-practice-text li {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.laboratory-practice-text ul {
+    padding-left: 20px;
+    margin-top: 12px;
+}
+
+.laboratory-practice-image img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 9px;
+}
+
+/* CAREERS */
+.laboratory-careers {
+    padding: 30px 6%;
+    text-align: center;
+}
+
+.laboratory-career-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.laboratory-career-card {
+    background: white;
+    padding: 18px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.laboratory-career-card h3 {
+    color: #0757c9;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.laboratory-career-card p {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* STUDY NOTES BANNER */
+.laboratory-cta {
+    background: #0757c9;
+    color: white;
+    text-align: center;
+    padding: 28px 6%;
+}
+
+.laboratory-cta h2 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.laboratory-cta p {
+    font-size: 13px;
+    margin-bottom: 17px;
+}
+
+.laboratory-cta a {
+    display: inline-block;
+    background: #ffd43b;
+    color: #073b80;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+.laboratory-footer {
+    background: #062d60;
+    color: white;
+    text-align: center;
+    padding: 25px 6%;
+}
+
+.laboratory-footer h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.laboratory-footer p {
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+    .laboratory-overview-grid,
+    .laboratory-subject-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .laboratory-career-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .laboratory-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .laboratory-nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .laboratory-hero {
+        flex-direction: column;
+        padding: 25px 6%;
+    }
+
+    .laboratory-hero-text h1 {
+        font-size: 27px;
+    }
+
+    .laboratory-hero-image img {
+        height: 210px;
+    }
+
+    .laboratory-intro {
+        padding: 25px 7%;
+    }
+
+    .laboratory-overview,
+    .laboratory-subjects,
+    .laboratory-careers {
+        padding: 25px 5%;
+    }
+
+    .laboratory-practice {
+        flex-direction: column;
+        padding: 25px 6%;
+    }
+
+    .laboratory-practice-image img {
+        height: 200px;
+    }
+
+    .laboratory-career-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .laboratory-cta {
+        padding: 25px 6%;
+    }
+}/* PHYSIOTHERAPY PAGE */
+
+.physiotherapy-page {
+    background: #f5f7fb;
+    color: #263238;
+}
+
+/* HEADER */
+.physiotherapy-header {
+    background: #0757c9;
+    color: white;
+    padding: 15px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.physiotherapy-brand {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.physiotherapy-nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.physiotherapy-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.physiotherapy-nav a:hover {
+    color: #ffd43b;
+}
+
+/* HERO */
+.physiotherapy-hero {
+    background: #0757c9;
+    color: white;
+    padding: 35px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.physiotherapy-hero-text {
+    flex: 1;
+}
+
+.physiotherapy-hero-text span {
+    color: #ffd43b;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.physiotherapy-hero-text h1 {
+    font-size: 36px;
+    margin: 12px 0;
+}
+
+.physiotherapy-hero-text p {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.physiotherapy-button {
+    display: inline-block;
+    background: #ffd43b;
+    color: #073b80;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.physiotherapy-hero-image {
+    flex: 1;
+}
+
+.physiotherapy-hero-image img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* INTRODUCTION */
+.physiotherapy-intro {
+    text-align: center;
+    padding: 30px 12%;
+    background: white;
+}
+
+.physiotherapy-intro h2,
+.physiotherapy-overview h2,
+.physiotherapy-subjects h2,
+.physiotherapy-careers h2 {
+    color: #0757c9;
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.physiotherapy-intro p {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* OVERVIEW */
+.physiotherapy-overview {
+    padding: 30px 6%;
+    text-align: center;
+}
+
+.physiotherapy-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.physiotherapy-card {
+    background: white;
+    padding: 18px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.physiotherapy-card h3 {
+    color: #0757c9;
+    font-size: 15px;
+    margin-bottom: 9px;
+}
+
+.physiotherapy-card p {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* SUBJECTS */
+.physiotherapy-subjects {
+    background: white;
+    padding: 30px 6%;
+    text-align: center;
+}
+
+.physiotherapy-subject-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.physiotherapy-subject {
+    background: #eef4ff;
+    color: #0757c9;
+    padding: 15px 10px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* PRACTICAL TRAINING */
+.physiotherapy-practice {
+    padding: 35px 6%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: #eef4ff;
+}
+
+.physiotherapy-practice-text,
+.physiotherapy-practice-image {
+    flex: 1;
+}
+
+.physiotherapy-practice-text h2 {
+    color: #0757c9;
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.physiotherapy-practice-text p,
+.physiotherapy-practice-text li {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.physiotherapy-practice-text ul {
+    padding-left: 20px;
+    margin-top: 12px;
+}
+
+.physiotherapy-practice-image img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 9px;
+}
+
+/* CAREERS */
+.physiotherapy-careers {
+    padding: 30px 6%;
+    text-align: center;
+}
+
+.physiotherapy-career-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.physiotherapy-career-card {
+    background: white;
+    padding: 18px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.physiotherapy-career-card h3 {
+    color: #0757c9;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.physiotherapy-career-card p {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* STUDY NOTES BANNER */
+.physiotherapy-cta {
+    background: #0757c9;
+    color: white;
+    text-align: center;
+    padding: 28px 6%;
+}
+
+.physiotherapy-cta h2 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.physiotherapy-cta p {
+    font-size: 13px;
+    margin-bottom: 17px;
+}
+
+.physiotherapy-cta a {
+    display: inline-block;
+    background: #ffd43b;
+    color: #073b80;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+.physiotherapy-footer {
+    background: #062d60;
+    color: white;
+    text-align: center;
+    padding: 25px 6%;
+}
+
+.physiotherapy-footer h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.physiotherapy-footer p {
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+    .physiotherapy-overview-grid,
+    .physiotherapy-subject-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .physiotherapy-career-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .physiotherapy-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .physiotherapy-nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .physiotherapy-hero {
+        flex-direction: column;
+        padding: 25px 6%;
+    }
+
+    .physiotherapy-hero-text h1 {
+        font-size: 27px;
+    }
+
+    .physiotherapy-hero-image img {
+        height: 210px;
+    }
+
+    .physiotherapy-intro {
+        padding: 25px 7%;
+    }
+
+    .physiotherapy-overview,
+    .physiotherapy-subjects,
+    .physiotherapy-careers {
+        padding: 25px 5%;
+    }
+
+    .physiotherapy-practice {
+        flex-direction: column;
+        padding: 25px 6%;
+    }
+
+    .physiotherapy-practice-image img {
+        height: 200px;
+    }
+
+    .physiotherapy-career-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .physiotherapy-cta {
+        padding: 25px 6%;
+    }
+}
+/* STUDY NOTES PAGE */
+
+.notes-page {
+    background: #f5f7fb;
+    color: #263238;
+}
+
+/* HEADER */
+.notes-header {
+    background: #0757c9;
+    color: white;
+    padding: 15px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.notes-brand {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.notes-nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.notes-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.notes-nav a:hover,
+.notes-nav a.active {
+    color: #ffd43b;
+}
+
+/* HERO */
+.notes-hero {
+    background: #0757c9;
+    color: white;
+    padding: 45px 8%;
+    text-align: center;
+}
+
+.notes-hero span {
+    color: #ffd43b;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.notes-hero h1 {
+    font-size: 34px;
+    margin: 12px 0;
+}
+
+.notes-hero p {
+    font-size: 13px;
+    line-height: 1.8;
+    max-width: 650px;
+    margin: auto;
+}
+
+/* SEARCH */
+.notes-search-section {
+    background: white;
+    padding: 25px 6%;
+    text-align: center;
+}
+
+.notes-search-section h2 {
+    color: #0757c9;
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+.notes-search-section input {
+    width: 80%;
+    max-width: 550px;
+    padding: 13px 16px;
+    border: 1px solid #ccd5e2;
+    border-radius: 7px;
+    font-size: 13px;
+    outline: none;
+}
+
+.notes-search-section input:focus {
+    border-color: #0757c9;
+    box-shadow: 0 0 5px rgba(7,87,201,0.2);
+}
+
+/* PROGRAMMES */
+.notes-categories {
+    padding: 30px 6%;
+    text-align: center;
+}
+
+.notes-categories h2 {
+    color: #0757c9;
+    font-size: 22px;
+}
+
+.notes-description {
+    font-size: 13px;
+    margin: 10px 0 20px;
+}
+
+.notes-programme-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.notes-programme-card {
+    display: block;
+    background: white;
+    color: #263238;
+    padding: 20px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: 0.2s;
+}
+
+.notes-programme-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 14px rgba(0,0,0,0.1);
+}
+
+.notes-programme-card div {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.notes-programme-card h3 {
+    color: #0757c9;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.notes-programme-card p {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* SUBJECT SECTIONS */
+.notes-subjects {
+    padding: 10px 6% 30px;
+}
+
+.notes-subject-section {
+    margin-bottom: 30px;
+    scroll-margin-top: 20px;
+}
+
+.notes-subject-section h2 {
+    color: #0757c9;
+    font-size: 21px;
+    border-left: 4px solid #ffd43b;
+    padding-left: 12px;
+    margin-bottom: 15px;
+}
+
+.notes-subject-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 13px;
+}
+
+.notes-subject-card {
+    background: white;
+    padding: 17px 13px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #edf0f5;
+}
+
+.notes-subject-card h3 {
+    color: #0757c9;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.notes-subject-card p {
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.notes-subject-card span {
+    display: inline-block;
+    background: #fff5cf;
+    color: #765700;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* CTA */
+.notes-cta {
+    background: #0757c9;
+    color: white;
+    text-align: center;
+    padding: 30px 6%;
+}
+
+.notes-cta h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.notes-cta p {
+    font-size: 13px;
+    margin-bottom: 17px;
+}
+
+.notes-cta a {
+    display: inline-block;
+    background: #ffd43b;
+    color: #073b80;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+.notes-footer {
+    background: #062d60;
+    color: white;
+    text-align: center;
+    padding: 25px 6%;
+}
+
+.notes-footer h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.notes-footer p {
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+    .notes-programme-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .notes-subject-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .notes-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .notes-nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .notes-hero {
+        padding: 30px 6%;
+    }
+
+    .notes-hero h1 {
+        font-size: 27px;
+    }
+
+    .notes-search-section {
+        padding: 22px 5%;
+    }
+
+    .notes-search-section input {
+        width: 100%;
+    }
+
+    .notes-categories {
+        padding: 25px 5%;
+    }
+
+    .notes-programme-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .notes-programme-card {
+        padding: 15px 10px;
+    }
+
+    .notes-subjects {
+        padding: 10px 5% 25px;
+    }
+
+    .notes-subject-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .notes-subject-card {
+        padding: 13px 10px;
+    }
+
+    .notes-subject-card h3 {
+        font-size: 13px;
+    }
+
+    .notes-cta {
+        padding: 25px 5%;
+    }
+}
+/* RESOURCES PAGE */
+
+.resources-page {
+    background: #f5f7fb;
+    color: #263238;
+}
+
+/* HEADER */
+.resources-header {
+    background: #0757c9;
+    color: white;
+    padding: 15px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.resources-brand {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.resources-nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.resources-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.resources-nav a:hover,
+.resources-nav a.active {
+    color: #ffd43b;
+}
+
+/* HERO */
+.resources-hero {
+    background: #0757c9;
+    color: white;
+    text-align: center;
+    padding: 45px 8%;
+}
+
+.resources-hero span {
+    color: #ffd43b;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.resources-hero h1 {
+    font-size: 34px;
+    margin: 12px 0;
+}
+
+.resources-hero p {
+    font-size: 13px;
+    line-height: 1.8;
+    max-width: 650px;
+    margin: auto;
+}
+
+/* INTRODUCTION */
+.resources-intro {
+    background: white;
+    text-align: center;
+    padding: 30px 10%;
+}
+
+.resources-intro h2,
+.resources-grid-section h2,
+.resources-platforms h2 {
+    color: #0757c9;
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.resources-intro p {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* RESOURCE CARDS */
+.resources-grid-section {
+    padding: 30px 6%;
+    text-align: center;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.resource-card {
+    background: white;
+    padding: 20px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: 0.2s;
+}
+
+.resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 14px rgba(0,0,0,0.1);
+}
+
+.resource-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.resource-card h3 {
+    color: #0757c9;
+    font-size: 15px;
+    margin-bottom: 9px;
+}
+
+.resource-card p {
+    font-size: 12px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.resource-card a {
+    display: inline-block;
+    background: #0757c9;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.resource-card a:hover {
+    background: #063b88;
+}
+
+/* EDUCATIONAL WEBSITES */
+.resources-platforms {
+    background: white;
+    padding: 30px 6%;
+    text-align: center;
+}
+
+.resources-platform-list {
+    max-width: 800px;
+    margin: 20px auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+}
+
+.resources-platform-list a {
+    background: #eef4ff;
+    padding: 16px;
+    border-radius: 7px;
+    text-align: left;
+    text-decoration: none;
+    color: #263238;
+    border-left: 4px solid #0757c9;
+    transition: 0.2s;
+}
+
+.resources-platform-list a:hover {
+    background: #e1ecff;
+}
+
+.resources-platform-list strong {
+    display: block;
+    color: #0757c9;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.resources-platform-list span {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* CTA */
+.resources-cta {
+    background: #0757c9;
+    color: white;
+    text-align: center;
+    padding: 30px 6%;
+}
+
+.resources-cta h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.resources-cta p {
+    font-size: 13px;
+    margin-bottom: 17px;
+}
+
+.resources-cta a {
+    display: inline-block;
+    background: #ffd43b;
+    color: #073b80;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+.resources-footer {
+    background: #062d60;
+    color: white;
+    text-align: center;
+    padding: 25px 6%;
+}
+
+.resources-footer h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.resources-footer p {
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+    .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .resources-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .resources-nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .resources-hero {
+        padding: 30px 6%;
+    }
+
+    .resources-hero h1 {
+        font-size: 27px;
+    }
+
+    .resources-intro {
+        padding: 25px 7%;
+    }
+
+    .resources-grid-section,
+    .resources-platforms {
+        padding: 25px 5%;
+    }
+
+    .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .resource-card {
+        padding: 15px 10px;
+    }
+
+    .resources-platform-list {
+        grid-template-columns: 1fr;
+    }
+
+    .resources-cta {
+        padding: 25px 5%;
+    }
+}
+
+/* =================================
+   COMPACT HOMEPAGE DESIGN
+================================= */
+
+.main-header {
+    padding: 12px 5%;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.brand {
+    font-size: 18px;
+}
+
+.brand-icon {
+    font-size: 23px;
+}
+
+.main-nav {
+    gap: 18px;
+}
+
+.main-nav a {
+    font-size: 13px;
+}
+
+/* HERO */
+
+.hero {
+    padding: 45px 5%;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: auto;
+    gap: 35px;
+}
+
+.hero-content {
+    width: 55%;
+}
+
+.hero-tag {
+    font-size: 11px;
+}
+
+.hero-content h1 {
+    font-size: 34px;
+    line-height: 1.2;
+    margin: 15px 0;
+}
+
+.hero-content p {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.hero-btn {
+    padding: 11px 18px;
+    font-size: 13px;
+}
+
+.hero-trust {
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.hero-image {
+    width: 45%;
+}
+
+.hero-image img {
+    width: 100%;
+    max-height: 340px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* ABOUT */
+
+.about-site {
+    padding: 38px 8%;
+}
+
+.about-site h2,
+.features h2,
+.quick-access h2,
+.reviews h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.about-site p {
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 950px;
+    margin: 10px auto;
+}
+
+/* FEATURES */
+
+.features {
+    padding: 40px 5%;
+}
+
+.features-intro {
+    font-size: 14px;
+    margin: 10px 0 25px;
+}
+
+.feature-container {
+    max-width: 1200px;
+    margin: auto;
+    gap: 16px;
+}
+
+.feature-card {
+    padding: 20px 16px;
+    border-radius: 10px;
+}
+
+.feature-icon {
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.feature-card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.feature-card p {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* COURSES */
+
+.courses {
+    padding: 45px 5%;
+}
+
+.courses-heading {
+    margin-bottom: 25px;
+}
+
+.courses-heading span {
+    font-size: 11px;
+}
+
+.courses-heading h2 {
+    font-size: 27px;
+    margin: 10px 0;
+}
+
+.courses-heading p {
+    font-size: 14px;
+}
+
+.course-container {
+    max-width: 1200px;
+    margin: auto;
+    gap: 17px;
+}
+
+.course-card {
+    padding: 20px;
+    border-radius: 11px;
+}
+
+.course-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.course-card h3 {
+    font-size: 16px;
+    margin-bottom: 9px;
+}
+
+.course-card p {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.course-link {
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+/* QUICK ACCESS */
+
+.quick-access {
+    padding: 40px 5%;
+}
+
+.quick-container {
+    max-width: 1100px;
+    margin: auto;
+    gap: 15px;
+}
+
+.quick-card {
+    padding: 18px 12px;
+    font-size: 23px;
+    border-radius: 10px;
+}
+
+.quick-card span {
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* REVIEWS */
+
+.reviews {
+    padding: 40px 5%;
+}
+
+.review-container {
+    max-width: 1100px;
+    margin: auto;
+    gap: 16px;
+}
+
+.review-card {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.review-card p {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.review-card strong {
+    font-size: 12px;
+}
+
+/* FOOTER */
+
+.footer {
+    padding: 30px 5% 15px;
+}
+
+.footer-brand h2 {
+    font-size: 20px;
+}
+
+.footer-brand p {
+    font-size: 13px;
+}
+
+.footer-links {
+    gap: 18px;
+    margin: 18px 0;
+}
+
+.footer-links a {
+    font-size: 13px;
+}
+
+.footer-bottom {
+    font-size: 12px;
+    margin-top: 18px;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .main-header {
+        padding: 12px 4%;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .brand {
+        font-size: 17px;
+    }
+
+    .main-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 15px;
+    }
+
+    .main-nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 30px 5%;
+    }
+
+    .hero-container {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .hero-content,
+    .hero-image {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-content p {
+        font-size: 13px;
+    }
+
+    .hero-image img {
+        max-height: 260px;
+    }
+
+    .about-site {
+        padding: 30px 6%;
+    }
+
+    .features,
+    .courses,
+    .quick-access,
+    .reviews {
+        padding: 32px 5%;
+    }
+
+    .about-site h2,
+    .features h2,
+    .quick-access h2,
+    .reviews h2 {
+        font-size: 22px;
+    }
+
+    .courses-heading h2 {
+        font-size: 23px;
+    }
+
+    .feature-container,
+    .course-container,
+    .review-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .feature-card,
+    .course-card,
+    .review-card {
+        padding: 15px 12px;
+    }
+
+    .quick-container {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .feature-container,
+    .course-container,
+    .review-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 25px;
+    }
+
+    .hero-buttons {
+        flex-wrap: wrap;
+    }
+}
+.hero-container {
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.hero-content {
+    width: 52%;
+}
+
+.hero-image {
+    width: 43%;
+}
+.hero {
+    padding: 15px 4%;
+}
+
+.hero-container {
+    max-width: 850px;
+    gap: 10px;
+    padding: 0;
+}
+
+.hero-content {
+    width: 50%;
+}
+
+.hero-image {
+    width: 40%;
+    max-width: 300px;
+}
+
+.hero-image img {
+    max-height: 220px;
+    width: 100%;
+    object-fit: cover;
+}
+.hero {
+    padding: 5px 2% !important;
+    min-height: auto !important;
+}
+
+.hero-container {
+    max-width: 700px !important;
+    gap: 5px !important;
+    padding: 0 !important;
+}
+
+.hero-content {
+    width: 55% !important;
+    padding: 0 !important;
+}
+
+.hero-content h1 {
+    font-size: 24px !important;
+    margin-bottom: 8px !important;
+}
+
+.hero-content p {
+    font-size: 13px !important;
+    margin-bottom: 8px !important;
+}
+
+.hero-image {
+    width: 35% !important;
+    max-width: 230px !important;
+}
+
+.hero-image img {
+    width: 100% !important;
+    height: 150px !important;
+    object-fit: cover !important;
+}
+.hero {
+    padding: 10px 3% !important;
+}
+
+.hero-container {
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    align-items: center !important;
+}
+
+.hero-content,
+.hero-image {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* =================================
+   FLASHCARDS PAGE
+================================= */
+
+.flashcards-page {
+    background: #f5f7fb;
+    color: #222;
+    font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+.flashcards-header {
+    background: #fff;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.flashcards-brand h2 {
+    color: #0757c9;
+    font-size: 21px;
+}
+
+.flashcards-nav {
+    display: flex;
+    gap: 25px;
+}
+
+.flashcards-nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.flashcards-nav a:hover {
+    color: #0757c9;
+}
+
+/* HERO */
+.flashcards-hero {
+    background: linear-gradient(120deg, #0757c9, #287de0);
+    color: white;
+    padding: 65px 8%;
+    text-align: center;
+}
+
+.flashcards-hero > div {
+    max-width: 750px;
+    margin: auto;
+}
+
+.flashcards-label {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #dbeaff;
+}
+
+.flashcards-hero h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.flashcards-hero p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #edf4ff;
+}
+
+/* SECTION HEADINGS */
+.flashcard-categories,
+.flashcard-study-area {
+    padding: 45px 8%;
+}
+
+.flashcard-section-heading {
+    margin-bottom: 25px;
+}
+
+.flashcard-section-heading h2 {
+    color: #172b4d;
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.flashcard-section-heading p {
+    color: #687386;
+    font-size: 14px;
+}
+
+/* CATEGORY CARDS */
+.flashcard-category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.flashcard-category {
+    background: white;
+    padding: 25px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #e7edf5;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    transition: 0.3s;
+}
+
+.flashcard-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 22px rgba(7,87,201,0.12);
+}
+
+.flashcard-category-icon {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.flashcard-category h3 {
+    font-size: 17px;
+    color: #0757c9;
+    margin-bottom: 10px;
+}
+
+.flashcard-category p {
+    font-size: 13px;
+    color: #687386;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.flashcard-category span {
+    color: #0757c9;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* STUDY AREA */
+.flashcard-study-area {
+    padding-top: 10px;
+}
+
+.flashcard-study-box {
+    max-width: 750px;
+    margin: auto;
+    background: white;
+    padding: 28px;
+    border-radius: 15px;
+    border: 1px solid #e5eaf2;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.flashcard-top {
+    display: flex;
+    justify-content: space-between;
+    color: #0757c9;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 22px;
+}
+
+/* MAIN FLASHCARD */
+.flashcard-display {
+    background: #f0f5ff;
+    border: 1px solid #dce8ff;
+    border-radius: 12px;
+    padding: 40px 25px;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.question-label {
+    color: #0757c9;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.flashcard-display h2 {
+    font-size: 25px;
+    color: #172b4d;
+    margin-bottom: 15px;
+}
+
+.flashcard-display p {
+    color: #687386;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.flashcard-display button {
+    background: #0757c9;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* ANSWER */
+.flashcard-answer {
+    display: none;
+    background: #eaf7f0;
+    color: #176b42;
+    border: 1px solid #c8ebd8;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* CONTROLS */
+.flashcard-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 22px;
+}
+
+.flashcard-controls button {
+    background: #0757c9;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.flashcard-controls button:hover,
+.flashcard-display button:hover {
+    background: #06449d;
+}
+
+/* PROGRESS */
+.flashcard-progress {
+    margin-top: 28px;
+}
+
+.flashcard-progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #536176;
+    margin-bottom: 10px;
+}
+
+.flashcard-progress-track {
+    width: 100%;
+    height: 8px;
+    background: #e7edf5;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#progress-fill {
+    width: 10%;
+    height: 100%;
+    background: #0757c9;
+    border-radius: 20px;
+}
+
+/* FOOTER */
+.flashcards-footer {
+    background: #102c50;
+    color: white;
+    text-align: center;
+    padding: 22px 15px;
+    font-size: 13px;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+
+    .flashcards-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 17px 5%;
+    }
+
+    .flashcards-brand h2 {
+        font-size: 19px;
+    }
+
+    .flashcards-nav {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .flashcards-nav a {
+        font-size: 12px;
+    }
+
+    .flashcards-hero {
+        padding: 45px 6%;
+    }
+
+    .flashcards-hero h1 {
+        font-size: 28px;
+    }
+
+    .flashcards-hero p {
+        font-size: 14px;
+    }
+
+    .flashcard-categories,
+    .flashcard-study-area {
+        padding: 30px 5%;
+    }
+
+    .flashcard-category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .flashcard-category {
+        padding: 18px 14px;
+    }
+
+    .flashcard-category h3 {
+        font-size: 15px;
+    }
+
+    .flashcard-study-box {
+        padding: 18px;
+    }
+
+    .flashcard-display {
+        padding: 30px 15px;
+        min-height: 210px;
+    }
+
+    .flashcard-display h2 {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 400px) {
+    .flashcard-category-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* FLASHCARD STUDY RATINGS */
+
+.flashcard-rating {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.flashcard-rating button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#mark-known {
+    background: #dff5e8;
+    color: #176b42;
+}
+
+#mark-revision {
+    background: #fff0d9;
+    color: #986000;
+}
+
+.flashcard-rating button:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 450px) {
+    .flashcard-rating {
+        flex-direction: column;
+    }
+}
+
+/* FLASHCARD STATISTICS */
+
+.flashcard-statistics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.stat-box {
+    padding: 15px 8px;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.stat-box h3 {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.stat-box p {
+    font-size: 12px;
+}
+
+.known-stat h3 {
+    color: #198754;
+}
+
+.revision-stat h3 {
+    color: #d18a16;
+}
+
+.remaining-stat h3 {
+    color: #0757c9;
+}
+
+@media (max-width: 450px) {
+    .flashcard-statistics {
+        gap: 6px;
+    }
+
+    .stat-box {
+        padding: 12px 4px;
+    }
+}
+
+/* RESET FLASHCARD PROGRESS */
+
+.reset-progress-container {
+    text-align: center;
+    margin: 15px 0 25px;
+}
+
+#reset-progress {
+    background: #fff0f0;
+    color: #c0392b;
+    border: 1px solid #e8b4b4;
+    padding: 10px 20px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#reset-progress:hover {
+    background: #fce0e0;
+}
+
+/* REVIEW DIFFICULT CARDS */
+
+.review-difficult-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 15px 0 25px;
+}
+
+.review-difficult-container button {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 7px;
+    background: #0757c9;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.review-difficult-container button:hover {
+    opacity: 0.85;
+}
+
+#show-all-cards {
+    background: #e8eef7;
+    color: #0757c9;
+}
+.card-status {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    background: #eeeeee;
+    color: #555;
+}
+
+.card-status.known {
+    background: #e1f5e8;
+    color: #16803c;
+}
+
+.card-status.revision {
+    background: #fff0d9;
+    color: #a65b00;
+}
+
+.card-status.unmarked {
+    background: #eeeeee;
+    color: #555;
+}
+/* SUBJECT PROGRESS SUMMARY */
+
+.subject-progress {
+    background: white;
+    padding: 18px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.subject-progress h2 {
+    font-size: 18px;
+    margin-bottom: 18px;
+    color: #0757c9;
+}
+
+.subject-progress-item {
+    margin-bottom: 18px;
+}
+
+.subject-progress-heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.subject-progress-track {
+    width: 100%;
+    height: 9px;
+    background: #e9ecef;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.subject-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #0757c9;
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
