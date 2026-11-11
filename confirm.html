@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Confirmation</title>
+</head>
+<body>
+    <h2>Confirming your email...</h2>
+    <p id="message">Please wait.</p>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        const SUPABASE_URL = "https://suvvqzcvebhwnvuxribt.supabase.co";
+            const SUPABASE_KEY = "sb_publishable_RApmn1W8BbEZO1U1GD0_2g_cthTwUPS";
+
+
+
+        const supabaseClient = window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+        async function confirmEmail() {
+            const message = document.getElementById("message");
+
+            const { error } = await supabaseClient.auth.getSession();
+
+            if (error) {
+                message.textContent = "Confirmation could not be completed. Please try again.";
+                return;
+            }
+
+            const { data, error: sessionError } =
+                await supabaseClient.auth.getUser();
+
+            if (sessionError || !data.user) {
+                message.textContent =
+                    "Email confirmation was not successful. Please request a fresh confirmation email.";
+            } else {
+                message.textContent =
+                    "Your email has been confirmed. You can now sign in.";
+            }
+        }
+
+        confirmEmail();
+    </script>
+</body>
+</html>
