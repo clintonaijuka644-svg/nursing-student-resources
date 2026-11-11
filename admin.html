@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Nursing Student Resources</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h2>Admin Dashboard</h2>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ask.html">Ask a Student</a>
+    </nav>
+</header>
+
+<section class="admin-dashboard">
+
+    <h2>Manage Student Questions</h2>
+
+    <p class="admin-intro">
+        Review questions submitted by students and
+        prepare answers for publication.
+    </p>
+
+    <div class="admin-stats">
+
+        <div class="admin-card">
+            <h3>Total Questions</h3>
+            <p id="totalQuestions">0</p>
+        </div>
+
+        <div class="admin-card">
+            <h3>Unanswered</h3>
+            <p id="unansweredQuestions">0</p>
+        </div>
+
+        <div class="admin-card">
+            <h3>Published</h3>
+            <p id="publishedCount">0</p>
+        </div>
+
+    </div>
+<div class="purchase-management">
+
+    <h3>Manage Purchase Requests</h3>
+
+    <p>
+        Review student purchase requests and verify payments.
+    </p>
+
+    <div id="purchaseRequests">
+        <p>Loading purchase requests...</p>
+    </div>
+
+</div>
+    <div class="question-management">
+
+        <h3>Submitted Questions</h3>
+
+        <div id="adminQuestions">
+            <p>No questions have been submitted yet.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Nursing Student Resources</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://suvvqzcvebhwnvuxribt.supabase.co";
+            const SUPABASE_KEY = "sb_publishable_RApmn1W8BbEZO1U1GD0_2g_cthTwUPS";
+
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+        auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true,
+            storageKey: "nursing-student-auth"
+        }
+    }
+);
+
+async function loadPurchaseRequests() {
+    const container = document.getElementById("purchaseRequests");
+
+    // Check whether the user is signed in
+    const { data: userData, error: userError } =
+        await supabaseClient.auth.getUser();
+
+    if (userError || !userData.user) {
+        container.textContent = "Please sign in first.";
+        return;
+    }
+
+    const user = userData.user;
+
+    // Check whether this user is an administrator
+    const { data: admin, error: adminError } =
+        await supabaseClient
+            .from("admin_users")
+            .select("user_id")
+            .eq("user_id", user.id)
+            .maybeSingle();
+
+    if (adminError || !admin) {
+        container.textContent =
+            "Access denied. Administrator permission required.";
+        return;
+    }
+
+    // Load purchase requests
+    const { data: requests, error } = await supabaseClient
+        .from("purchases")
+        .select("id, user_id, product_id, status, created_at")
+        .order("created_at", { ascending: false });
+
+    if (error) {
+        container.textContent = "Error: " + error.message;
+        return;
+    }
+
+    if (!requests.length) {
+        container.textContent = "No purchase requests yet.";
+        return;
+    }
+
+    container.innerHTML = "";
+
+    requests.forEach(request => {
+        const item = document.createElement("div");
+        item.className = "admin-card";
+
+        const heading = document.createElement("h4");
+        heading.textContent = request.product_id;
+
+        const details = document.createElement("p");
+        details.textContent =
+            "Student ID: " + request.user_id +
+            " | Status: " + request.status;
+
+        item.appendChild(heading);
+        item.appendChild(details);
+
+        if (request.status === "pending") {
+            const approve = document.createElement("button");
+            approve.textContent = "Approve Payment";
+            approve.onclick = () =>
+                reviewPurchase(request.id, "paid");
+
+            const reject = document.createElement("button");
+            reject.textContent = "Reject Request";
+            reject.onclick = () =>
+                reviewPurchase(request.id, "rejected");
+
+            item.appendChild(approve);
+            item.appendChild(reject);
+        }
+
+        container.appendChild(item);
+    });
+}
+    const container = document.getElementById("purchaseRequests");
+
+    const { data: userData, error: userError } =
+        await supabaseClient.auth.getUser();
+
+    if (userError || !userData.user) {
+        container.textContent = "Please sign in first.";
+        return;
+    }
+
+    const { data: requests, error } = await supabaseClient
+        .from("purchases")
+        .select("id, user_id, product_id, status, created_at")
+        .order("created_at", { ascending: false });
+
+    if (error) {
+        container.textContent = "Error: " + error.message;
+        return;
+    }
+
+    if (!requests.length) {
+        container.textContent = "No purchase requests yet.";
+        return;
+    }
+
+    container.innerHTML = "";
+
+    requests.forEach(request => {
+        const item = document.createElement("div");
+
+        item.className = "admin-card";
+
+        const heading = document.createElement("h4");
+        heading.textContent = request.product_id;
+
+        const details = document.createElement("p");
+        details.textContent =
+            "Student ID: " + request.user_id +
+            " | Status: " + request.status;
+
+        item.appendChild(heading);
+        item.appendChild(details);
+
+        if (request.status === "pending") {
+            const approve = document.createElement("button");
+            approve.textContent = "Approve Payment";
+            approve.onclick = () =>
+                reviewPurchase(request.id, "paid");
+
+            const reject = document.createElement("button");
+            reject.textContent = "Reject Request";
+            reject.onclick = () =>
+                reviewPurchase(request.id, "rejected");
+
+            item.appendChild(approve);
+            item.appendChild(reject);
+        }
+
+        container.appendChild(item);
+    });
+}
+
+async function reviewPurchase(id, status) {
+    const { error } = await supabaseClient.rpc(
+        "review_purchase",
+        {
+            p_purchase_id: id,
+            p_status: status
+        }
+    );
+
+    if (error) {
+        alert("Review failed: " + error.message);
+        return;
+    }
+
+    alert("Purchase status updated.");
+    loadPurchaseRequests();
+}
+
+loadPurchaseRequests();
+</script>
+</body>
+</html>
