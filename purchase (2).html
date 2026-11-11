@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Notes | Nursing Student Resources</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f6fc;
+            margin: 0;
+            padding: 25px 15px;
+        }
+
+        .purchase-box {
+            max-width: 450px;
+            margin: 35px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px #00000018;
+        }
+
+        h2 {
+            color: #0757c9;
+            text-align: center;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0757c9;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #0757c9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background: #888;
+        }
+
+        a {
+            color: #0757c9;
+        }
+
+        #message {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="purchase-box">
+
+    <h2>Physiology Study Notes</h2>
+
+    <p>
+        Get access to our Physiology study materials
+        prepared for Nursing students.
+    </p>
+
+    <p class="price">Price: To be announced</p>
+
+    <p>
+        Submit a purchase request below. Your request
+        will remain pending until payment is verified.
+    </p>
+
+    <button id="requestButton" onclick="requestPurchase()">
+        Request Physiology Notes
+    </button>
+
+    <p id="message"></p>
+
+    <p style="text-align:center;">
+        <a href="notes.html">Back to Study Notes</a>
+    </p>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+    const SUPABASE_URL =
+        "https://suvvqzcvebhwnvuxribt.supabase.co";
+
+            const SUPABASE_KEY = "sb_publishable_RApmn1W8BbEZO1U1GD0_2g_cthTwUPS";
+
+
+
+
+
+    const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+    async function requestPurchase() {
+
+        const button = document.getElementById("requestButton");
+        const message = document.getElementById("message");
+
+        button.disabled = true;
+        message.textContent = "Checking your account...";
+
+        try {
+            const { data: userData, error: userError } =
+                await supabaseClient.auth.getUser();
+
+const { data: sessionData, error: sessionError } =
+    await supabaseClient.auth.getSession();
+
+if (sessionError) {
+    message.textContent =
+        "Session check failed: " + sessionError.message;
+    button.disabled = false;
+    return;
+}
+
+if (!sessionData.session) {
+    message.innerHTML =
+        'No saved login session found. Please <a href="login.html">sign in</a> first.';
+    button.disabled = false;
+    return;
+}
+
+const user = sessionData.session.user;
+            message.textContent = "Submitting your request...";
+
+            const { error } = await supabaseClient
+                .from("purchases")
+                .insert({
+                    user_id: user.id,
+                    product_id: "physiology",
+                    status: "pending"
+                });
+
+            if (error) {
+                if (error.code === "23505") {
+                    message.textContent =
+                        "You already have a Physiology purchase request.";
+                } else {
+                    message.textContent =
+                        "Request failed: " + error.message;
+                }
+
+                button.disabled = false;
+                return;
+            }
+
+            message.textContent =
+                "Your request has been received. It is awaiting payment verification.";
+
+        } catch (error) {
+            message.textContent =
+                "Something went wrong. Please try again.";
+
+            button.disabled = false;
+        }
+    }
+</script>
+
+</body>
+</html>
