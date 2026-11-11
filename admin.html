@@ -182,14 +182,14 @@ async function loadPurchaseRequests() {
 
             return;
         }
-
+n
 
         // RETRIEVE PURCHASE REQUESTS
 
         const { data: requests, error } =
             await supabaseClient
                 .from("purchases")
-                .select("id, user_id, product_id, status, created_at")
+                .select("id, user_id, product_id, status, created_at, payment_method, transaction_reference")
                 .order("created_at", { ascending: false });
 
         if (error) {
@@ -225,9 +225,11 @@ async function loadPurchaseRequests() {
 
             const details = document.createElement("p");
 
-            details.textContent =
-                "Student ID: " + request.user_id +
-                " | Status: " + request.status;
+details.textContent =
+    "Student ID: " + request.user_id +
+    " | Status: " + request.status +
+    " | Payment Method: " + (request.payment_method || "Not provided") +
+    " | Transaction Reference: " + (request.transaction_reference || "Not provided");
 
 
             item.appendChild(heading);
