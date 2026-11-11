@@ -161,7 +161,12 @@
 
         const button = document.getElementById("requestButton");
         const message = document.getElementById("message");
+         const paymentMethod = document.getElementById("paymentMethod");
 
+if (!paymentMethod.value) {
+    message.textContent = "Please select MTN or Airtel before continuing.";
+    return;
+}
         button.disabled = true;
         message.textContent = "Checking your account...";
 
