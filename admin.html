@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,40 +88,71 @@
 
 // SUPABASE CONFIGURATION
 
-const SUPABASE_URL = "https://suvvqzcvebhwnvuxribt.supabase.co";
+const SUPABASE_URL =
+    "https://suvvqzcvebhwnvuxribt.supabase.co";
 
-const SUPABASE_KEY = "sb_publishable_RApmn1W8BbEZO1U1GD0_2g_cthTwUPS";
+const SUPABASE_KEY =
+    "sb_publishable_RApmn1W8BbEZO1U1GD0_2g_cthTwUPS";
 
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY,
-    {
-        auth: {
-            persistSession: true,
-            autoRefreshToken: true,
-            detectSessionInUrl: true,
-            storageKey: "nursing-student-auth"
-        }
+
+// INITIALIZE SUPABASE
+
+let supabaseClient;
+
+try {
+
+    if (!window.supabase) {
+        throw new Error("Supabase library failed to load.");
     }
-);
+
+    supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY,
+        {
+            auth: {
+                persistSession: true,
+                autoRefreshToken: true,
+                detectSessionInUrl: true,
+                storageKey: "nursing-student-auth"
+            }
+        }
+    );
+
+} catch (error) {
+
+    document.getElementById("purchaseRequests").textContent =
+        "Setup error: " + error.message;
+
+}
 
 
 // LOAD PURCHASE REQUESTS
 
 async function loadPurchaseRequests() {
 
-    const container = document.getElementById("purchaseRequests");
+    const container =
+        document.getElementById("purchaseRequests");
+
+    // Do not overwrite an initialization error
+
+    if (!supabaseClient) {
+        return;
+    }
 
     container.textContent = "Loading purchase requests...";
 
     try {
 
-        // Check signed-in user
+        // CHECK SIGNED-IN USER
 
         const { data: userData, error: userError } =
             await supabaseClient.auth.getUser();
 
-        if (userError || !userData.user) {
+        if (userError) {
+            throw userError;
+        }
+
+        if (!userData.user) {
 
             container.textContent = "Please sign in first.";
 
@@ -132,7 +162,7 @@ async function loadPurchaseRequests() {
         const user = userData.user;
 
 
-        // Verify administrator permission
+        // VERIFY ADMINISTRATOR PERMISSION
 
         const { data: admin, error: adminError } =
             await supabaseClient
@@ -141,7 +171,11 @@ async function loadPurchaseRequests() {
                 .eq("user_id", user.id)
                 .maybeSingle();
 
-        if (adminError || !admin) {
+        if (adminError) {
+            throw adminError;
+        }
+
+        if (!admin) {
 
             container.textContent =
                 "Access denied. Administrator permission required.";
@@ -150,7 +184,7 @@ async function loadPurchaseRequests() {
         }
 
 
-        // Retrieve purchase requests
+        // RETRIEVE PURCHASE REQUESTS
 
         const { data: requests, error } =
             await supabaseClient
@@ -159,15 +193,11 @@ async function loadPurchaseRequests() {
                 .order("created_at", { ascending: false });
 
         if (error) {
-
-            container.textContent =
-                "Error loading requests: " + error.message;
-
-            return;
+            throw error;
         }
 
 
-        // Check for empty requests
+        // CHECK FOR EMPTY REQUESTS
 
         if (!requests || requests.length === 0) {
 
@@ -177,7 +207,7 @@ async function loadPurchaseRequests() {
         }
 
 
-        // Display requests
+        // DISPLAY PURCHASE REQUESTS
 
         container.innerHTML = "";
 
@@ -205,7 +235,7 @@ async function loadPurchaseRequests() {
             item.appendChild(details);
 
 
-            // Approval and rejection buttons
+            // APPROVE OR REJECT PENDING REQUESTS
 
             if (request.status === "pending") {
 
@@ -228,8 +258,8 @@ async function loadPurchaseRequests() {
                 item.appendChild(approve);
 
                 item.appendChild(reject);
-            }
 
+            }
 
             container.appendChild(item);
 
@@ -238,7 +268,7 @@ async function loadPurchaseRequests() {
     } catch (error) {
 
         container.textContent =
-            "Unable to load requests: " + error.message;
+            "Error loading requests: " + error.message;
 
     }
 
@@ -249,29 +279,34 @@ async function loadPurchaseRequests() {
 
 async function reviewPurchase(id, status) {
 
-    const { error } = await supabaseClient.rpc(
-        "review_purchase",
-        {
-            p_purchase_id: id,
-            p_status: status
-        }
-    );
+    try {
 
-    if (error) {
+        const { error } = await supabaseClient.rpc(
+            "review_purchase",
+            {
+                p_purchase_id: id,
+                p_status: status
+            }
+        );
+
+        if (error) {
+            throw error;
+        }
+
+        alert("Purchase status updated.");
+
+        loadPurchaseRequests();
+
+    } catch (error) {
 
         alert("Review failed: " + error.message);
 
-        return;
     }
-
-    alert("Purchase status updated.");
-
-    loadPurchaseRequests();
 
 }
 
 
-// START LOADING REQUESTS
+// START LOADING PURCHASE REQUESTS
 
 loadPurchaseRequests();
 
