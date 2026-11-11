@@ -347,7 +347,7 @@ if (physiologyButton) {
             const { data: fileData, error: fileError } =
                 await supabaseClient
                     .storage
-                    .from("study-notes")
+                    .from("Study-notes")
                     .createSignedUrl("physiology.pdf", 300);
 
             if (fileError) throw fileError;
