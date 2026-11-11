@@ -233,8 +233,37 @@
     <p>© 2026 Health Science Resources. All rights reserved.</p>
 </footer>
 
+<!-- Supabase Library -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+
+// SUPABASE CONFIGURATION
+
+const SUPABASE_URL =
+    "https://suvvqzcvebhwnvuxribt.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_RApmn1W8BbEZO1U1GD0_2g_cthTwUPS";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+        auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true,
+            storageKey: "nursing-student-auth"
+        }
+    }
+);
+
+
+// NOTES SEARCH FUNCTION
+
 function searchNotes() {
+
     let input = document.getElementById("notesSearch")
         .value.toLowerCase();
 
@@ -243,14 +272,113 @@ function searchNotes() {
     );
 
     cards.forEach(function(card) {
+
         let content = card.textContent.toLowerCase();
 
         card.style.display = content.includes(input)
             ? ""
             : "none";
+
     });
+
 }
+
+
+// PHYSIOLOGY PDF ACCESS
+
+const physiologyButton =
+    document.getElementById("physiologyAccessBtn");
+
+const physiologyMessage =
+    document.getElementById("physiologyAccessMessage");
+
+
+if (physiologyButton) {
+
+    physiologyButton.addEventListener("click", async function() {
+
+        physiologyButton.disabled = true;
+
+        physiologyMessage.textContent =
+            "Checking your purchase status...";
+
+        try {
+
+            // CHECK SIGNED-IN USER
+
+            const { data: userData, error: userError } =
+                await supabaseClient.auth.getUser();
+
+            if (userError) throw userError;
+
+            if (!userData.user) {
+
+                physiologyMessage.textContent =
+                    "Please sign in to access your notes.";
+
+                return;
+            }
+
+
+            // CHECK PAYMENT STATUS
+
+            const { data: purchase, error: purchaseError } =
+                await supabaseClient
+                    .from("purchases")
+                    .select("status")
+                    .eq("user_id", userData.user.id)
+                    .eq("product_id", "physiology")
+                    .maybeSingle();
+
+            if (purchaseError) throw purchaseError;
+
+
+            if (!purchase || purchase.status !== "paid") {
+
+                physiologyMessage.textContent =
+                    "Payment has not yet been approved.";
+
+                return;
+            }
+
+
+            // CREATE TEMPORARY PRIVATE PDF LINK
+
+            const { data: fileData, error: fileError } =
+                await supabaseClient
+                    .storage
+                    .from("study-notes")
+                    .createSignedUrl("physiology.pdf", 300);
+
+            if (fileError) throw fileError;
+
+
+            // OPEN THE PDF
+
+            physiologyMessage.textContent =
+                "Opening your Physiology notes...";
+
+            window.location.href = fileData.signedUrl;
+
+        } catch (error) {
+
+            physiologyMessage.textContent =
+                "Unable to open notes: " + error.message;
+
+        } finally {
+
+            physiologyButton.disabled = false;
+
+        }
+
+    });
+
+}
+
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
