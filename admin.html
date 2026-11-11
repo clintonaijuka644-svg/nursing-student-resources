@@ -122,117 +122,90 @@ async function loadPurchaseRequests() {
         return;
     }
 
-    // Load purchase requests
-    const { data: requests, error } = await supabaseClient
-        .from("purchases")
-        .select("id, user_id, product_id, status, created_at")
-        .order("created_at", { ascending: false });
-
-    if (error) {
-        container.textContent = "Error: " + error.message;
-        return;
-    }
-
-    if (!requests.length) {
-        container.textContent = "No purchase requests yet.";
-        return;
-    }
-
-    container.innerHTML = "";
-
-    requests.forEach(request => {
-        const item = document.createElement("div");
-        item.className = "admin-card";
-
-        const heading = document.createElement("h4");
-        heading.textContent = request.product_id;
-
-        const details = document.createElement("p");
-        details.textContent =
-            "Student ID: " + request.user_id +
-            " | Status: " + request.status;
-
-        item.appendChild(heading);
-        item.appendChild(details);
-
-        if (request.status === "pending") {
-            const approve = document.createElement("button");
-            approve.textContent = "Approve Payment";
-            approve.onclick = () =>
-                reviewPurchase(request.id, "paid");
-
-            const reject = document.createElement("button");
-            reject.textContent = "Reject Request";
-            reject.onclick = () =>
-                reviewPurchase(request.id, "rejected");
-
-            item.appendChild(approve);
-            item.appendChild(reject);
-        }
-
-        container.appendChild(item);
-    });
-}
+    
+async function loadPurchaseRequests() {
     const container = document.getElementById("purchaseRequests");
 
-    const { data: userData, error: userError } =
-        await supabaseClient.auth.getUser();
+    container.textContent = "Loading purchase requests...";
 
-    if (userError || !userData.user) {
-        container.textContent = "Please sign in first.";
-        return;
-    }
+    try {
+        const { data: userData, error: userError } =
+            await supabaseClient.auth.getUser();
 
-    const { data: requests, error } = await supabaseClient
-        .from("purchases")
-        .select("id, user_id, product_id, status, created_at")
-        .order("created_at", { ascending: false });
-
-    if (error) {
-        container.textContent = "Error: " + error.message;
-        return;
-    }
-
-    if (!requests.length) {
-        container.textContent = "No purchase requests yet.";
-        return;
-    }
-
-    container.innerHTML = "";
-
-    requests.forEach(request => {
-        const item = document.createElement("div");
-
-        item.className = "admin-card";
-
-        const heading = document.createElement("h4");
-        heading.textContent = request.product_id;
-
-        const details = document.createElement("p");
-        details.textContent =
-            "Student ID: " + request.user_id +
-            " | Status: " + request.status;
-
-        item.appendChild(heading);
-        item.appendChild(details);
-
-        if (request.status === "pending") {
-            const approve = document.createElement("button");
-            approve.textContent = "Approve Payment";
-            approve.onclick = () =>
-                reviewPurchase(request.id, "paid");
-
-            const reject = document.createElement("button");
-            reject.textContent = "Reject Request";
-            reject.onclick = () =>
-                reviewPurchase(request.id, "rejected");
-
-            item.appendChild(approve);
-            item.appendChild(reject);
+        if (userError || !userData.user) {
+            container.textContent = "Please sign in first.";
+            return;
         }
 
-        container.appendChild(item);
-    });
+        const user = userData.user;
+
+        const { data: admin, error: adminError } =
+            await supabaseClient
+                .from("admin_users")
+                .select("user_id")
+                .eq("user_id", user.id)
+                .maybeSingle();
+
+        if (adminError || !admin) {
+            container.textContent =
+                "Access denied. Administrator permission required.";
+            return;
+        }
+
+        const { data: requests, error } = await supabaseClient
+            .from("purchases")
+            .select("id, user_id, product_id, status, created_at")
+            .order("created_at", { ascending: false });
+
+        if (error) {
+            container.textContent = "Error: " + error.message;
+            return;
+        }
+
+        if (!requests || requests.length === 0) {
+            container.textContent = "No purchase requests yet.";
+            return;
+        }
+
+        container.innerHTML = "";
+
+        requests.forEach(request => {
+            const item = document.createElement("div");
+            item.className = "admin-card";
+
+            const heading = document.createElement("h4");
+            heading.textContent = request.product_id;
+
+            const details = document.createElement("p");
+            details.textContent =
+                "Student ID: " + request.user_id +
+                " | Status: " + request.status;
+
+            item.appendChild(heading);
+            item.appendChild(details);
+
+            if (request.status === "pending") {
+                const approve = document.createElement("button");
+                approve.textContent = "Approve Payment";
+                approve.onclick = () =>
+                    reviewPurchase(request.id, "paid");
+
+                const reject = document.createElement("button");
+                reject.textContent = "Reject Request";
+                reject.onclick = () =>
+                    reviewPurchase(request.id, "rejected");
+
+                item.appendChild(approve);
+                item.appendChild(reject);
+            }
+
+            container.appendChild(item);
+        });
+
+    } catch (error) {
+        container.textContent =
+            "Unable to load requests: " + error.message;
+    }
 }
 
 async function reviewPurchase(id, status) {
@@ -254,6 +227,6 @@ async function reviewPurchase(id, status) {
 }
 
 loadPurchaseRequests();
-</script>
+        
 </body>
 </html>
