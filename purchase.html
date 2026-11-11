@@ -119,7 +119,10 @@
         Submit a purchase request below. Your request
         will remain pending until payment is verified.
     </p>
-
+    <label style="display:block; margin:20px 0;">
+    <input type="checkbox" id="paymentConfirmation">
+    I have made the payment of UGX 5,000.
+    </label>
     <button id="requestButton" onclick="requestPurchase()">
         Request Physiology Notes
     </button>
@@ -165,6 +168,14 @@
 
 if (!paymentMethod.value) {
     message.textContent = "Please select MTN or Airtel before continuing.";
+    return;
+}
+        const paymentConfirmation =
+    document.getElementById("paymentConfirmation");
+
+if (!paymentConfirmation.checked) {
+    message.textContent =
+        "Please confirm that you have made the payment.";
     return;
 }
         button.disabled = true;
