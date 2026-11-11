@@ -123,6 +123,17 @@
     <input type="checkbox" id="paymentConfirmation">
     I have made the payment of UGX 5,000.
     </label>
+    <label for="transactionReference">
+    Mobile Money Transaction Reference:
+</label>
+
+<input
+    type="text"
+    id="transactionReference"
+    placeholder="Enter transaction reference"
+    required
+    style="width:100%; padding:12px; margin:10px 0; box-sizing:border-box;"
+>
     <button id="requestButton" onclick="requestPurchase()">
         Request Physiology Notes
     </button>
@@ -177,6 +188,13 @@ if (!paymentConfirmation.checked) {
     message.textContent =
         "Please confirm that you have made the payment.";
     return;
+}const transactionReference =
+    document.getElementById("transactionReference");
+
+if (!transactionReference.value.trim()) {
+    message.textContent =
+        "Please enter your Mobile Money transaction reference.";
+    return;
 }
         button.disabled = true;
         message.textContent = "Checking your account...";
@@ -208,9 +226,12 @@ const user = sessionData.session.user;
             const { error } = await supabaseClient
                 .from("purchases")
                 .insert({
-                    user_id: user.id,
-                    product_id: "physiology",
-                    status: "pending"
+    user_id: user.id,
+    product_id: "physiology",
+    status: "pending",
+    payment_method: paymentMethod.value,
+    transaction_reference: transactionReference.value.trim()
+}
                 });
 
             if (error) {
