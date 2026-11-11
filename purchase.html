@@ -73,7 +73,19 @@
 <div class="purchase-box">
 
     <h2>Physiology Study Notes</h2>
+     <div class="payment-details">
+    <h3>Choose Payment Method</h3>
 
+    <label for="paymentMethod">Mobile Money Network:</label>
+
+    <select id="paymentMethod">
+        <option value="">Select network</option>
+        <option value="mtn">MTN Mobile Money</option>
+        <option value="airtel">Airtel Money</option>
+    </select>
+
+    <p id="paymentNumber" hidden></p>
+     </div>
     <p>
         Get access to our Physiology study materials
         prepared for Nursing students.
@@ -187,6 +199,25 @@ const user = sessionData.session.user;
         }
     }
 </script>
+ <script>
+const paymentMethod = document.getElementById("paymentMethod");
+const paymentNumber = document.getElementById("paymentNumber");
 
+paymentMethod.addEventListener("change", function () {
+    if (this.value === "mtn") {
+        paymentNumber.textContent =
+            "Send UGX 5,000 to MTN: 0784743468";
+        paymentNumber.hidden = false;
+    } 
+    else if (this.value === "airtel") {
+        paymentNumber.textContent =
+            "Send UGX 5,000 to Airtel: 0703203102";
+        paymentNumber.hidden = false;
+    } 
+    else {
+        paymentNumber.hidden = true;
+    }
+});
+ </script>
 </body>
 </html>
