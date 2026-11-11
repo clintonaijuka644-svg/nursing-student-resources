@@ -87,9 +87,17 @@
     const SUPABASE_KEY = "sb_publishable_RApmn1W8BbEZO1U1GD0_2g_cthTwUPS";
 
     const supabaseClient = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+        auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true,
+            storageKey: "nursing-student-auth"
+        }
+    }
+);
 
     async function register() {
         const email = document.getElementById("email").value.trim();
@@ -117,7 +125,8 @@
         }
     }
 
-    async function login() {
+    async function const SUPABASE_KEY = "sb_publishable_RApmn1W8BbEZO1U1GD0_2g_cthTwUPS";
+login() {
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
         const message = document.getElementById("message");

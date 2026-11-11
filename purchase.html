@@ -104,13 +104,24 @@
     const SUPABASE_URL =
         "https://suvvqzcvebhwnvuxribt.supabase.co";
 
-    const SUPABASE_KEY =
-        "YOUR_EXISTING_PUBLISHABLE_KEY";
+            const SUPABASE_KEY = "sb_publishable_RApmn1W8BbEZO1U1GD0_2g_cthTwUPS";
+
+
+
+
 
     const supabaseClient = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+        auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true,
+            storageKey: "nursing-student-auth"
+        }
+    }
+);
 
     async function requestPurchase() {
 
@@ -124,15 +135,24 @@
             const { data: userData, error: userError } =
                 await supabaseClient.auth.getUser();
 
-            if (userError || !userData.user) {
-                message.innerHTML =
-                    'Please <a href="login.html">sign in</a> first.';
-                button.disabled = false;
-                return;
-            }
+const { data: sessionData, error: sessionError } =
+    await supabaseClient.auth.getSession();
 
-            const user = userData.user;
+if (sessionError) {
+    message.textContent =
+        "Session check failed: " + sessionError.message;
+    button.disabled = false;
+    return;
+}
 
+if (!sessionData.session) {
+    message.innerHTML =
+        'No saved login session found. Please <a href="login.html">sign in</a> first.';
+    button.disabled = false;
+    return;
+}
+
+const user = sessionData.session.user;
             message.textContent = "Submitting your request...";
 
             const { error } = await supabaseClient
