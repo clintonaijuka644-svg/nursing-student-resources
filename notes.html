@@ -101,7 +101,7 @@
     <p>Functions of the human body.</p>
 
     <button type="button" id="physiologyAccessBtn">
-        Access Physiology Notes
+        purchase physiology notes 
     </button>
 
     <p id="physiologyAccessMessage"></p>
@@ -284,101 +284,21 @@ function searchNotes() {
 }
 
 
-// PHYSIOLOGY PDF ACCESS
+// PHYSIOLOGY PURCHASE PAGE
 
 const physiologyButton =
     document.getElementById("physiologyAccessBtn");
 
-const physiologyMessage =
-    document.getElementById("physiologyAccessMessage");
-
-
 if (physiologyButton) {
 
-    physiologyButton.addEventListener("click", async function() {
+    physiologyButton.addEventListener("click", function() {
 
-        physiologyButton.disabled = true;
-
-        physiologyMessage.textContent =
-            "Checking your purchase status...";
-
-        try {
-
-            // CHECK SIGNED-IN USER
-
-            const { data: userData, error: userError } =
-                await supabaseClient.auth.getUser();
-
-            if (userError) throw userError;
-
-            if (!userData.user) {
-
-                physiologyMessage.textContent =
-                    "Please sign in to access your notes.";
-
-                return;
-            }
-
-
-            // CHECK PAYMENT STATUS
-
-            const { data: purchase, error: purchaseError } =
-                await supabaseClient
-                    .from("purchases")
-                    .select("status")
-                    .eq("user_id", userData.user.id)
-                    .eq("product_id", "physiology")
-                    .maybeSingle();
-
-            if (purchaseError) throw purchaseError;
-
-
-            if (!purchase || purchase.status !== "paid") {
-
-                physiologyMessage.textContent =
-                    "Payment has not yet been approved.";
-
-                return;
-            }
-
-
-            // CREATE TEMPORARY PRIVATE PDF LINK
-
-            const { data: fileData, error: fileError } =
-                await supabaseClient
-                    .storage
-                    .from("Study-notes")
-                    .createSignedUrl("physiology.pdf", 300);
-
-            if (fileError) throw fileError;
-
-
-            // OPEN THE PDF
-
-            physiologyMessage.textContent =
-                "Opening your Physiology notes...";
-
-            window.location.href = fileData.signedUrl;
-
-        } catch (error) {
-
-            physiologyMessage.textContent =
-                "Unable to open notes: " + error.message;
-
-        } finally {
-
-            physiologyButton.disabled = false;
-
-        }
+        window.location.href = "purchase.html";
 
     });
 
 }
-
-</script>
-
+    </script>
 </body>
 </html>
-
-</body>
-</html>
+    
