@@ -7255,24 +7255,24 @@ html {
     opacity: 0.6;
     cursor: not-allowed;
 }
-/* STUDENT SIGN UP AND LOGIN PAGE */
+/* STUDENT AUTHENTICATION CARD */
 
 .auth-container {
-    width: 90%;
-    max-width: 430px;
-    margin: 60px auto;
-    padding: 35px 28px;
+    width: 92%;
+    max-width: 440px;
+    margin: 50px auto;
+    padding: 35px 30px;
     background: #ffffff;
-    border-radius: 14px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
     box-sizing: border-box;
 }
 
 .auth-container h2 {
     text-align: center;
     color: #0757c9;
-    font-size: 25px;
     margin-bottom: 10px;
+    font-size: 25px;
 }
 
 .auth-container > p {
@@ -7281,10 +7281,14 @@ html {
     line-height: 1.6;
 }
 
+/* VERTICAL FORM LAYOUT */
+
 .auth-container form {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     gap: 12px;
+    width: 100%;
     margin-top: 25px;
 }
 
@@ -7293,36 +7297,41 @@ html {
 }
 
 .auth-container label {
+    display: block;
+    text-align: left;
     font-weight: 600;
     color: #333;
     margin-top: 5px;
 }
 
 .auth-container input {
+    display: block;
     width: 100%;
-    padding: 13px;
+    height: 46px;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 7px;
+    border-radius: 8px;
     font-size: 15px;
     box-sizing: border-box;
-    outline: none;
 }
 
 .auth-container input:focus {
+    outline: none;
     border-color: #0757c9;
-    box-shadow: 0 0 4px rgba(7, 87, 201, 0.2);
 }
 
 .auth-container button {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
     background: #0757c9;
     color: white;
-    padding: 14px;
     border: none;
-    border-radius: 7px;
+    border-radius: 8px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 12px;
 }
 
 .auth-container button:hover {
@@ -7330,8 +7339,7 @@ html {
 }
 
 .auth-container #message {
-    margin-top: 18px;
-    font-weight: 600;
+    text-align: center;
     overflow-wrap: anywhere;
 }
 
@@ -7347,11 +7355,8 @@ html {
 
 @media (max-width: 600px) {
     .auth-container {
-        margin: 30px auto;
+        width: 92%;
+        margin: 25px auto;
         padding: 25px 20px;
-    }
-
-    .auth-container h2 {
-        font-size: 22px;
     }
 }
