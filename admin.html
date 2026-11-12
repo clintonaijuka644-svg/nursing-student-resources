@@ -269,8 +269,8 @@ details.textContent =
 
     } catch (error) {
 
-        container.textContent =
-            "Error loading requests: " + error.message;
+    container.textContent =
+    "Error loading requests: " + (error.stack || error.message);
 
     }
 
