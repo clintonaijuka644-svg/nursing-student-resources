@@ -4,10 +4,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Student Account | Health Science Resources</title>
-    <link rel="stylesheet" href="style.css">
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5fb;
+            color: #333;
+        }
+
+        header {
+            background: #0757c9;
+            padding: 18px 5%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .auth-container {
+            width: 92%;
+            max-width: 440px;
+            margin: 55px auto;
+            padding: 35px 30px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.10);
+        }
+
+        .auth-container h2 {
+            text-align: center;
+            color: #0757c9;
+            font-size: 26px;
+            margin: 0 0 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .auth-form[hidden] {
+            display: none !important;
+        }
+
+        .auth-form label {
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .auth-form input {
+            width: 100%;
+            height: 48px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            background: white;
+        }
+
+        .auth-form input:focus {
+            outline: none;
+            border-color: #0757c9;
+            box-shadow: 0 0 4px rgba(7, 87, 201, 0.2);
+        }
+
+        .auth-form button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 12px;
+            background: #0757c9;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .auth-form button:hover {
+            background: #03449e;
+        }
+
+        .auth-form button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #message {
+            text-align: center;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+            margin-top: 18px;
+            font-size: 14px;
+        }
+
+        .switch-text {
+            text-align: center;
+            margin-top: 22px;
+            font-size: 14px;
+        }
+
+        .switch-text a {
+            color: #0757c9;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .switch-text a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .auth-container {
+                margin: 30px auto;
+                padding: 27px 20px;
+            }
+
+            .auth-container h2 {
+                font-size: 23px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -26,17 +189,20 @@
 
     <h2 id="formTitle">Create Student Account</h2>
 
-    <p id="formDescription">
+    <p class="description" id="formDescription">
         Register to access your learning resources.
     </p>
 
-    <form id="signupForm">
+    <!-- REGISTRATION FORM -->
+
+    <form id="signupForm" class="auth-form">
 
         <label for="signupEmail">Email Address</label>
         <input
             type="email"
             id="signupEmail"
             placeholder="Enter your email"
+            autocomplete="email"
             required
         >
 
@@ -46,6 +212,7 @@
             id="signupPassword"
             placeholder="Create a password"
             minlength="6"
+            autocomplete="new-password"
             required
         >
 
@@ -55,20 +222,26 @@
             id="confirmPassword"
             placeholder="Confirm your password"
             minlength="6"
+            autocomplete="new-password"
             required
         >
 
-        <button type="submit">Create Account</button>
+        <button type="submit" id="signupButton">
+            Create Account
+        </button>
 
     </form>
 
-    <form id="loginForm" hidden>
+    <!-- LOGIN FORM -->
+
+    <form id="loginForm" class="auth-form" hidden>
 
         <label for="loginEmail">Email Address</label>
         <input
             type="email"
             id="loginEmail"
             placeholder="Enter your email"
+            autocomplete="email"
             required
         >
 
@@ -77,31 +250,38 @@
             type="password"
             id="loginPassword"
             placeholder="Enter your password"
+            autocomplete="current-password"
             required
         >
 
-        <button type="submit">Sign In</button>
+        <button type="submit" id="loginButton">
+            Sign In
+        </button>
 
     </form>
 
-    <p id="message" role="status"></p>
+    <p id="message" role="status" aria-live="polite"></p>
 
-    <p id="switchText">
+    <p class="switch-text" id="switchText">
         Already have an account?
-        <a href="#" id="switchForm">Sign In</a>
+        <a href="#" id="switchLink">Sign In</a>
     </p>
 
 </main>
+
+<footer>
+    &copy; 2026 Health Science Resources
+</footer>
 
 <script>
 
 // SUPABASE CONFIGURATION
 
 const SUPABASE_URL =
-"https://suvvqzcvebhwnvuxribt.supabase.co";
+    "https://suvvqzcvebhwnvuxribt.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_RApmn1W8BbEZO1U1GD0_2g_cthTwUPS";
+    "sb_publishable_RApmn1W8BbEZO1U1GD0_2g_cthTwUPS";
 
 const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
@@ -116,24 +296,22 @@ const supabaseClient = window.supabase.createClient(
     }
 );
 
-// FORM ELEMENTS
+// PAGE ELEMENTS
 
 const signupForm = document.getElementById("signupForm");
 const loginForm = document.getElementById("loginForm");
-const switchForm = document.getElementById("switchForm");
-const switchText = document.getElementById("switchText");
 const formTitle = document.getElementById("formTitle");
 const formDescription = document.getElementById("formDescription");
+const switchText = document.getElementById("switchText");
 const message = document.getElementById("message");
 
 let signupMode = true;
 
-// SWITCH BETWEEN FORMS
+// SWITCH BETWEEN REGISTRATION AND LOGIN
 
-switchForm.addEventListener("click", function(event) {
-    event.preventDefault();
+function showForm(isSignup) {
 
-    signupMode = !signupMode;
+    signupMode = isSignup;
 
     message.textContent = "";
 
@@ -141,100 +319,147 @@ switchForm.addEventListener("click", function(event) {
     loginForm.hidden = signupMode;
 
     if (signupMode) {
+
         formTitle.textContent = "Create Student Account";
+
         formDescription.textContent =
             "Register to access your learning resources.";
 
         switchText.innerHTML =
-            'Already have an account? <a href="#" id="switchForm">Sign In</a>';
+            'Already have an account? <a href="#" id="switchLink">Sign In</a>';
 
     } else {
+
         formTitle.textContent = "Student Sign In";
+
         formDescription.textContent =
             "Sign in to your student account.";
 
         switchText.innerHTML =
-            'New student? <a href="#" id="switchForm">Create Account</a>';
+            'New student? <a href="#" id="switchLink">Create Account</a>';
+    }
+}
+
+switchText.addEventListener("click", function(event) {
+
+    if (event.target.id === "switchLink") {
+
+        event.preventDefault();
+
+        showForm(!signupMode);
     }
 
-    document.getElementById("switchForm").addEventListener(
-        "click",
-        switchFormHandler
-    );
 });
-
-function switchFormHandler(event) {
-    event.preventDefault();
-    switchForm.click();
-}
 
 // STUDENT REGISTRATION
 
 signupForm.addEventListener("submit", async function(event) {
+
     event.preventDefault();
 
-    const email = document.getElementById("signupEmail").value.trim();
-    const password = document.getElementById("signupPassword").value;
+    const email =
+        document.getElementById("signupEmail").value.trim();
+
+    const password =
+        document.getElementById("signupPassword").value;
+
     const confirmPassword =
         document.getElementById("confirmPassword").value;
 
+    const button = document.getElementById("signupButton");
+
     if (password !== confirmPassword) {
+
         message.textContent = "Passwords do not match.";
+
         return;
     }
 
+    button.disabled = true;
     message.textContent = "Creating your account...";
 
-    const { data, error } = await supabaseClient.auth.signUp({
-        email: email,
-        password: password
-    });
+    try {
 
-    if (error) {
+        const { data, error } =
+            await supabaseClient.auth.signUp({
+                email: email,
+                password: password
+            });
+
+        if (error) {
+            throw error;
+        }
+
+        if (data.session) {
+
+            message.textContent =
+                "Account created successfully. You are signed in.";
+
+        } else {
+
+            message.textContent =
+                "Account created. Please check your email for a verification link before signing in.";
+        }
+
+        signupForm.reset();
+
+    } catch (error) {
+
         message.textContent = error.message;
-        return;
+
+    } finally {
+
+        button.disabled = false;
     }
 
-    if (data.session) {
-        message.textContent =
-            "Account created successfully. You are signed in.";
-    } else {
-        message.textContent =
-            "Account created. Please check your email for a verification link before signing in.";
-    }
-
-    signupForm.reset();
 });
 
 // STUDENT LOGIN
 
 loginForm.addEventListener("submit", async function(event) {
+
     event.preventDefault();
 
-    const email = document.getElementById("loginEmail").value.trim();
-    const password = document.getElementById("loginPassword").value;
+    const email =
+        document.getElementById("loginEmail").value.trim();
 
+    const password =
+        document.getElementById("loginPassword").value;
+
+    const button = document.getElementById("loginButton");
+
+    button.disabled = true;
     message.textContent = "Signing in...";
 
-    const { data, error } =
-        await supabaseClient.auth.signInWithPassword({
-            email: email,
-            password: password
-        });
+    try {
 
-    if (error) {
+        const { error } =
+            await supabaseClient.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+        if (error) {
+            throw error;
+        }
+
+        message.textContent =
+            "Login successful! Your student account is active.";
+
+        loginForm.reset();
+
+    } catch (error) {
+
         message.textContent = error.message;
-        return;
+
+    } finally {
+
+        button.disabled = false;
     }
 
-    message.textContent =
-        "Login successful! Your student account is active.";
-
-    loginForm.reset();
 });
 
 </script>
 
 </body>
-    </html>
-    
+</html>
