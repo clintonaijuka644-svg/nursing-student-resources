@@ -1,13 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
+    <title>Student Account | Health Science Resources</title>
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
+
 <body>
-    <header>
+
+<header>
     <nav>
         <a href="index.html">Home</a>
         <a href="notes.html">Notes</a>
@@ -17,6 +22,219 @@
     </nav>
 </header>
 
-    
+<main class="auth-container">
+
+    <h2 id="formTitle">Create Student Account</h2>
+
+    <p id="formDescription">
+        Register to access your learning resources.
+    </p>
+
+    <form id="signupForm">
+
+        <label for="signupEmail">Email Address</label>
+        <input
+            type="email"
+            id="signupEmail"
+            placeholder="Enter your email"
+            required
+        >
+
+        <label for="signupPassword">Password</label>
+        <input
+            type="password"
+            id="signupPassword"
+            placeholder="Create a password"
+            minlength="6"
+            required
+        >
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm your password"
+            minlength="6"
+            required
+        >
+
+        <button type="submit">Create Account</button>
+
+    </form>
+
+    <form id="loginForm" hidden>
+
+        <label for="loginEmail">Email Address</label>
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Enter your email"
+            required
+        >
+
+        <label for="loginPassword">Password</label>
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter your password"
+            required
+        >
+
+        <button type="submit">Sign In</button>
+
+    </form>
+
+    <p id="message" role="status"></p>
+
+    <p id="switchText">
+        Already have an account?
+        <a href="#" id="switchForm">Sign In</a>
+    </p>
+
+</main>
+
+<script>
+
+// SUPABASE CONFIGURATION
+
+const SUPABASE_URL =
+"https://suvvqzcvebhwnvuxribt.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_RApmn1W8BbEZO1U1GD0_2g_cthTwUPS";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+        auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true,
+            storageKey: "nursing-student-auth"
+        }
+    }
+);
+
+// FORM ELEMENTS
+
+const signupForm = document.getElementById("signupForm");
+const loginForm = document.getElementById("loginForm");
+const switchForm = document.getElementById("switchForm");
+const switchText = document.getElementById("switchText");
+const formTitle = document.getElementById("formTitle");
+const formDescription = document.getElementById("formDescription");
+const message = document.getElementById("message");
+
+let signupMode = true;
+
+// SWITCH BETWEEN FORMS
+
+switchForm.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    signupMode = !signupMode;
+
+    message.textContent = "";
+
+    signupForm.hidden = !signupMode;
+    loginForm.hidden = signupMode;
+
+    if (signupMode) {
+        formTitle.textContent = "Create Student Account";
+        formDescription.textContent =
+            "Register to access your learning resources.";
+
+        switchText.innerHTML =
+            'Already have an account? <a href="#" id="switchForm">Sign In</a>';
+
+    } else {
+        formTitle.textContent = "Student Sign In";
+        formDescription.textContent =
+            "Sign in to your student account.";
+
+        switchText.innerHTML =
+            'New student? <a href="#" id="switchForm">Create Account</a>';
+    }
+
+    document.getElementById("switchForm").addEventListener(
+        "click",
+        switchFormHandler
+    );
+});
+
+function switchFormHandler(event) {
+    event.preventDefault();
+    switchForm.click();
+}
+
+// STUDENT REGISTRATION
+
+signupForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("signupEmail").value.trim();
+    const password = document.getElementById("signupPassword").value;
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+        message.textContent = "Passwords do not match.";
+        return;
+    }
+
+    message.textContent = "Creating your account...";
+
+    const { data, error } = await supabaseClient.auth.signUp({
+        email: email,
+        password: password
+    });
+
+    if (error) {
+        message.textContent = error.message;
+        return;
+    }
+
+    if (data.session) {
+        message.textContent =
+            "Account created successfully. You are signed in.";
+    } else {
+        message.textContent =
+            "Account created. Please check your email for a verification link before signing in.";
+    }
+
+    signupForm.reset();
+});
+
+// STUDENT LOGIN
+
+loginForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    message.textContent = "Signing in...";
+
+    const { data, error } =
+        await supabaseClient.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+
+    if (error) {
+        message.textContent = error.message;
+        return;
+    }
+
+    message.textContent =
+        "Login successful! Your student account is active.";
+
+    loginForm.reset();
+});
+
+</script>
+
 </body>
-</html>
+    </html>
+    
