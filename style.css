@@ -7255,3 +7255,103 @@ html {
     opacity: 0.6;
     cursor: not-allowed;
 }
+/* STUDENT SIGN UP AND LOGIN PAGE */
+
+.auth-container {
+    width: 90%;
+    max-width: 430px;
+    margin: 60px auto;
+    padding: 35px 28px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+    box-sizing: border-box;
+}
+
+.auth-container h2 {
+    text-align: center;
+    color: #0757c9;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.auth-container > p {
+    text-align: center;
+    color: #666;
+    line-height: 1.6;
+}
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.auth-container form[hidden] {
+    display: none;
+}
+
+.auth-container label {
+    font-weight: 600;
+    color: #333;
+    margin-top: 5px;
+}
+
+.auth-container input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 15px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.auth-container input:focus {
+    border-color: #0757c9;
+    box-shadow: 0 0 4px rgba(7, 87, 201, 0.2);
+}
+
+.auth-container button {
+    background: #0757c9;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.auth-container button:hover {
+    background: #03449e;
+}
+
+.auth-container #message {
+    margin-top: 18px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.auth-container a {
+    color: #0757c9;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .auth-container {
+        margin: 30px auto;
+        padding: 25px 20px;
+    }
+
+    .auth-container h2 {
+        font-size: 22px;
+    }
+}
